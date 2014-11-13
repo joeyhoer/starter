@@ -1,0 +1,49 @@
+# Install native apps
+# Usage: `brew bundle Caskfile`
+
+# Install Cask
+install caskroom/cask/brew-cask
+tap caskroom/versions
+
+# Make sure we’re using the latest Cask
+cask update
+
+# Install GUI applications
+cask install adobe-creative-cloud
+cask install airdisplay
+cask install dropbox
+cask install firefox
+cask install firefox-aurora
+cask install google-chrome
+cask install google-chrome-canary
+cask install imagealpha
+cask install imageoptim
+cask install opera
+cask install opera-developer
+cask install opera-next
+cask install parallels
+cask install sequel-pro
+cask install sublime-text3
+cask install the-unarchiver
+cask install totalterminal
+cask install transmission
+cask install vlc
+cask install webkit-nightly
+cask install xquartz
+
+# Install Preference Panes
+cask install hosts
+
+# Install QuickLook Plugins
+cask install qlcolorcode
+cask install qlmarkdown
+cask install qlstephen
+
+# Install Color Picker Plugins
+cask install colorpicker-developer
+
+# Install others
+cask install hashcat
+
+# Remove outdated versions from the cellar
+cask cleanup
