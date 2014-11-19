@@ -55,7 +55,7 @@ install pwgen
 install tree
 install webkit2png
 install xpdf
-install ffmpeg
+install ffmpeg --with-libvpx
 
 # Install local server stack
 install mysql
@@ -73,7 +73,7 @@ install apngasm
 #install exiv2
 install gifsicle
 install icoutils
-install imagemagick --with-webp
+install imagemagick --with-libtiff --with-librsvg --with-webp
 install imageworsener
 install jhead
 install jpeg
