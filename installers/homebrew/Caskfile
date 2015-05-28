@@ -12,7 +12,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
-# Make sure we’re using the latest Cask
+# Make sure we're using the latest Cask
 brew cask update
 
 # Install GUI applications
@@ -28,7 +28,6 @@ brew cask install imagealpha
 brew cask install imageoptim
 brew cask install opera
 brew cask install opera-beta
-brew cask install parallels
 brew cask install sequel-pro
 brew cask install sublime-text3
 brew cask install the-unarchiver

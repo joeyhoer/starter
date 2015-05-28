@@ -22,3 +22,18 @@
 #defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool true
 #defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -int 1
 #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 1
+
+# Force Click and haptic feedback
+defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool true
+defaults write com.AppleMultitouchTrackpad ActuateDetents -bool true
+defaults write com.AppleMultitouchTrackpad ForceSuppressed -bool false
+
+# Haptic feedback
+# 0: Light
+# 1: Medium
+# 2: Firm
+defaults write com.AppleMultitouchTrackpad FirstClickThreshold -int 0
+defaults write com.AppleMultitouchTrackpad SecondClickThreshold -int 0
+
+# Tracking Speed
+defaults write NSGlobalDomain com.apple.trackpad.scaling -float 1

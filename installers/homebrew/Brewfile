@@ -16,22 +16,22 @@ brew upgrade --all
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-# brew install coreutils
+#brew install coreutils
 # Install some other useful utilities like `sponge`
-# brew install moreutils
+#brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
-# brew install findutils
+#brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`
-# brew install gnu-sed --default-names
+#brew install gnu-sed --default-names
 
 # Install Shells
 # Note: Don't forget to add shells to `/etc/shells` before running `chsh`.
 brew install bash
-# brew install bash-completion
+#brew install bash-completion
 brew install zsh
 
 # Install wget with IRI support
-brew install wget --enable-iri
+brew install wget --with-iri
 
 # Install RingoJS and Narwhal
 # Note that the order in which these are installed is important; see http://git.io/brew-narwhal-ringo.
@@ -39,7 +39,7 @@ brew install ringojs
 brew install narwhal
 
 # Install more recent versions of some OS X tools
-# brew install vim --override-system-vi
+#brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/screen
 
@@ -52,7 +52,7 @@ brew install mysql
 brew install dnsmasq
 
 # Install Python tools
-# brew install pyenv
+#brew install pyenv
 
 # Install Ruby tools
 brew install rbenv
@@ -69,7 +69,7 @@ brew install closure-compiler
 brew install yuicompressor
 
 # Install other useful binaries
-# brew install bfg
+#brew install bfg
 brew install git
 brew install imagesnap
 brew install lynx
@@ -77,7 +77,6 @@ brew install pv
 brew install pwgen
 brew install tree
 brew install webkit2png
-brew install xpdf
 brew install ffmpeg --with-faac --with-libvpx --with-x265
 
 # Install recovery and security tools
@@ -109,6 +108,9 @@ brew install pngnq
 brew install pngquant
 brew install webp
 brew install zopfli --HEAD
+
+# X11 utilities
+#brew install homebrew/x11/xpdf
 
 # Install compression tools
 brew install p7zip
