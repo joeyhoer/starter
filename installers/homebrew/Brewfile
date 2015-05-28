@@ -1,120 +1,126 @@
-# Install command-line tools
-# Usage: `brew bundle Brewfile`
+#!/usr/bin/env bash
+
+# Install command-line tools using Homebrew
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until the script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Make sure we’re using the latest Homebrew
-update
+brew update
 
 # Upgrade any already-installed formulae
-upgrade
+brew upgrade --all
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-# install coreutils
+# brew install coreutils
 # Install some other useful utilities like `sponge`
-# install moreutils
+# brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
-# install findutils
+# brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`
-# install gnu-sed --default-names
+# brew install gnu-sed --default-names
 
 # Install Shells
 # Note: Don't forget to add shells to `/etc/shells` before running `chsh`.
-# install bash
-# install bash-completion
-# install zsh
+brew install bash
+# brew install bash-completion
+brew install zsh
 
 # Install wget with IRI support
-install wget --enable-iri
+brew install wget --enable-iri
 
 # Install RingoJS and Narwhal
 # Note that the order in which these are installed is important; see http://git.io/brew-narwhal-ringo.
-install ringojs
-install narwhal
+brew install ringojs
+brew install narwhal
 
 # Install more recent versions of some OS X tools
-# install vim --override-system-vi
-install homebrew/dupes/grep
-install homebrew/dupes/screen
+# brew install vim --override-system-vi
+brew install homebrew/dupes/grep
+brew install homebrew/dupes/screen
 
 # Install server stack
-# install homebrew/php/php56
-# install homebrew/php/php56-opcache
-# install homebrew/php/php56-apcu
-# install homebrew/php/php56-mcrypt
-install mysql
-install dnsmasq
+brew install homebrew/php/php56
+brew install homebrew/php/php56-opcache
+brew install homebrew/php/php56-apcu
+brew install homebrew/php/php56-mcrypt
+brew install mysql
+brew install dnsmasq
 
-# Install Pythin tools
-# install pyenv
+# Install Python tools
+# brew install pyenv
 
 # Install Ruby tools
-install rbenv
-install ruby-build
+brew install rbenv
+brew install ruby-build
 
 # Install JS tools
-install node # This installs `npm` too using the recommended installation method
-install rhino
-install phantomjs
-install slimerjs
+brew install node # This installs `npm` too using the recommended installation method
+brew install rhino
+brew install phantomjs
+brew install slimerjs
 
 # Install CSS and JS compressors
-install closure-compiler
-install yuicompressor
+brew install closure-compiler
+brew install yuicompressor
 
 # Install other useful binaries
-# install bfg
-install git
-install imagesnap
-install lynx
-install pv
-install pwgen
-install tree
-install webkit2png
-install xpdf
-install ffmpeg --with-faac --with-libvpx --with-x265
+# brew install bfg
+brew install git
+brew install imagesnap
+brew install lynx
+brew install pv
+brew install pwgen
+brew install tree
+brew install webkit2png
+brew install xpdf
+brew install ffmpeg --with-faac --with-libvpx --with-x265
 
 # Install recovery and security tools
-install foremost
-install nmap
-install sqlmap
-install hashpump
+brew install foremost
+brew install nmap
+brew install sqlmap
+brew install hashpump
 
 # Install image utilities
-install advancecomp
-install apngasm
-#install exiv2
-install gifsicle
-install gifify
-install graphicsmagick
-install icoutils
-install imagemagick --with-libtiff --with-librsvg --with-webp
-install imageworsener
-install jhead
-install jpeg
-install jpegoptim
-install homebrew/headonly/jpegrescan --HEAD
-install libbpg
-install mozjpeg
-install optipng
-install perceptualdiff
-install pngcrush
-install pngnq
-install pngquant
-install webp
-install zopfli --HEAD
+brew install advancecomp
+brew install apngasm
+#brew install exiv2
+brew install gifsicle
+brew install gifify
+brew install graphicsmagick
+brew install icoutils
+brew install imagemagick --with-libtiff --with-librsvg --with-webp
+brew install imageworsener
+brew install jhead
+brew install jpeg
+brew install jpegoptim
+brew install homebrew/headonly/jpegrescan --HEAD
+brew install libbpg
+brew install mozjpeg
+brew install optipng
+brew install perceptualdiff
+brew install pngcrush
+brew install pngnq
+brew install pngquant
+brew install webp
+brew install zopfli --HEAD
 
 # Install compression tools
-install p7zip
-install bzip2
-install pbzip2
-install lbzip2
-install gzip
-install pigz
-install xz
-install pxz
-install pixz
-install unar
-
+brew install p7zip
+brew install bzip2
+brew install pbzip2
+brew install lbzip2
+brew install gzip
+brew install pigz
+brew install xz
+brew install pxz
+brew install pixz
+brew install unar
 
 # Remove outdated versions from the cellar
-cleanup
+brew cleanup

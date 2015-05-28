@@ -1,49 +1,56 @@
-# Install native apps
-# Usage: `brew bundle Caskfile`
+#!/usr/bin/env bash
+
+# Install GUI applications with Homebrew Cask
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until the script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Install Cask
-install caskroom/cask/brew-cask
-tap caskroom/versions
+brew install caskroom/cask/brew-cask
+brew tap caskroom/versions
 
 # Make sure we’re using the latest Cask
-cask update
+brew cask update
 
 # Install GUI applications
-cask install adapter
-cask install adobe-creative-cloud
-cask install airdisplay
-cask install dropbox
-cask install firefox
-cask install firefoxdeveloperedition
-cask install google-chrome
-cask install google-chrome-canary
-cask install imagealpha
-cask install imageoptim
-cask install opera
-cask install opera-beta
-cask install parallels
-cask install sequel-pro
-cask install sublime-text3
-cask install the-unarchiver
-cask install totalterminal
-cask install transmission
-cask install vlc
-cask install webkit-nightly
-cask install xquartz
+brew cask install adapter
+brew cask install adobe-creative-cloud
+brew cask install airdisplay
+brew cask install dropbox
+brew cask install firefox
+brew cask install firefoxdeveloperedition
+brew cask install google-chrome
+brew cask install google-chrome-canary
+brew cask install imagealpha
+brew cask install imageoptim
+brew cask install opera
+brew cask install opera-beta
+brew cask install parallels
+brew cask install sequel-pro
+brew cask install sublime-text3
+brew cask install the-unarchiver
+brew cask install totalterminal
+brew cask install transmission
+brew cask install vlc
+brew cask install webkit-nightly
+brew cask install xquartz
 
 # Install Preference Panes
-cask install hosts
+brew cask install hosts
 
 # Install QuickLook Plugins
-cask install qlcolorcode
-cask install qlmarkdown
-cask install qlstephen
+brew cask install qlcolorcode
+brew cask install qlmarkdown
+brew cask install qlstephen
 
 # Install Color Picker Plugins
-cask install colorpicker-developer
+brew cask install colorpicker-developer
 
 # Install others
-cask install hashcat
+brew cask install hashcat
 
 # Remove outdated versions from the cellar
-cask cleanup
+brew cask cleanup
