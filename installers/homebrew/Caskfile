@@ -9,18 +9,18 @@ tap caskroom/versions
 cask update
 
 # Install GUI applications
+cask install adapter
 cask install adobe-creative-cloud
 cask install airdisplay
 cask install dropbox
 cask install firefox
-cask install firefox-aurora
+cask install firefoxdeveloperedition
 cask install google-chrome
 cask install google-chrome-canary
 cask install imagealpha
 cask install imageoptim
 cask install opera
-cask install opera-developer
-cask install opera-next
+cask install opera-beta
 cask install parallels
 cask install sequel-pro
 cask install sublime-text3

@@ -4,10 +4,10 @@
 # Terminal                                                                    #
 ###############################################################################
 
-# Only use UTF-8 in Terminal.app
+# Only use UTF-8 in Terminal
 defaults write com.apple.terminal StringEncodings -array 4
 
-# Use a modified version of the Solarized Dark theme by default in Terminal.app
+# Use a modified version of the Solarized Dark theme by default
 TERM_PROFILE='Solarized Dark xterm-256color';
 CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
 if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
@@ -17,9 +17,10 @@ if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
     defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
 fi;
 
-# Enable “focus follows mouse” for Terminal.app and all X11 apps
+# Enable "focus follows mouse" for Terminal
 # i.e. hover over a window and start typing in it without clicking first
 #defaults write com.apple.terminal FocusFollowsMouse -bool true
+# Enable "focus follows mouse" for all X11 apps
 #defaults write org.x.X11 wm_ffm -bool true
 
 # Audible and Visual Bells

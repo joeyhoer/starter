@@ -25,7 +25,7 @@ defaults write com.apple.speech.voice.prefs SelectedVoiceName -string "Alex"
 
 # Speaking Rate
 # Set as a multidimensional array, the first value is the SelectedVoiceCreator
-#   the second value is the SelectedVoiceID, and the thrid value is the speaking rate
+# the second value is the SelectedVoiceID, and the thrid value is the speaking rate
 # Slow   : 90
 # Normal : 175
 # Fast   : 350
@@ -35,5 +35,5 @@ defaults write com.apple.speech.voice.prefs SelectedVoiceName -string "Alex"
     -c "Add    :VoiceRateDataArray:0   array"              \
     -c "Add    :VoiceRateDataArray:0:0 integer 1835364215" \
     -c "Add    :VoiceRateDataArray:0:1 integer 201"        \
-    -c "Add    :VoiceRateDataArray:0:2 integer 300"        \
+    -c "Add    :VoiceRateDataArray:0:2 integer 350"        \
     ~/Library/Preferences/com.apple.speech.voice.prefs.plist

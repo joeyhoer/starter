@@ -8,10 +8,13 @@
 hash npm 2>/dev/null || echo "Please install npm before continuing"
 
 # Install Node packages
-sudo npm install -g autoprefixer
-sudo npm install -g browser-sync
-sudo npm install -g grunt-cli
-sudo npm install -g jscrush
-sudo npm install -g packer
-sudo npm install -g svgo
-sudo npm install -g uglify-js
+npm install -g a11y
+npm install -g autoprefixer
+npm install -g browser-sync
+npm install -g grunt-cli
+npm install -g jscrush
+npm install -g packer
+npm install -g svgo
+npm install -g uglify-js
+npm install -g cssmin
+npm install -g psi

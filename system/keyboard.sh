@@ -41,10 +41,10 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 # Keyboard Shortcuts (these are case insensitive)
 # Modifier key legend:
-#   @    ⌘  Command
 #   ^    ⌃  Control
 #   ~    ⌥  Option
 #   $    ⇧  Shift
+#   @    ⌘  Command
 #   nil     No shortcut
 # Note: The "$" character may need to be escaped, as usual, in Bash commands
 # http://support.apple.com/kb/HT1343

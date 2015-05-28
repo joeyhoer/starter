@@ -8,9 +8,7 @@
 hash rbenv 2>/dev/null || echo "Please install rbenv before continuing"
 
 # Install latest (stable) Ruby
-$ruby_latest=$(rbenv install -l | sed -e 's/^[\t ]*//g'                  \
-    -e '/^[^0-9].*/d;/.*-\(dev\).*/d;/.*-\(preview\).*/d;/.*-\(rc\).*/d' \
-    | tail -1)
+$ruby_latest=$(rbenv install -l | awk '$1 ~ /^[0-9.]*$/ {print $1}' | tail -1)
 rbenv install $ruby_latest
 rbenv rehash
 rbenv global $ruby_latest
