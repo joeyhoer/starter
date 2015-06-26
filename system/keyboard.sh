@@ -8,7 +8,15 @@
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set key repeat rate
+# Off: 300000
+# Slow: 120
+# Fast: 2
 defaults write NSGlobalDomain KeyRepeat -int 0
+
+# Set delay until repeat (in milliseconds)
+# Long: 120
+# Short: 15
+defaults write NSGlobalDomain InitialKeyRepeat -int 5
 
 # Adjust keyboard brightness in low light
 defaults write com.apple.BezelServices kDim -bool true
@@ -39,12 +47,19 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Correct spelling automatically
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Prevent accidental Power button presses from sleeping system
+defaults write com.apple.loginwindow PowerButtonSleepsSystem -bool false
+
 # Keyboard Shortcuts (these are case insensitive)
 # Modifier key legend:
 #   ^    ⌃  Control
 #   ~    ⌥  Option
 #   $    ⇧  Shift
 #   @    ⌘  Command
+#   \033    Nested Option Delimiter
 #   nil     No shortcut
 # Note: The "$" character may need to be escaped, as usual, in Bash commands
 # http://support.apple.com/kb/HT1343
+# Note: When adding shortcuts for nested options, entries must begin with
+# the '\033' escape sequence, in addition to seperating the options.
+# (e.g. '\033Edit\033Find\033Find Next")

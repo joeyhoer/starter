@@ -190,3 +190,6 @@ defaults write org.webkit.nightly.WebKit StartPageDisabled -bool true
 # Toggle the toolbar with `⌘⌥T`
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Hide Toolbar' '@~t'
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Show Toolbar' '@~t'
+
+# Open Bookmarks Group in tabs
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add '\033Bookmarks\033Work\033Open in Tabs' '@$g'
