@@ -30,6 +30,13 @@ brew install bash
 #brew install bash-completion
 brew install zsh
 
+# Install Terminal Multiplexer
+brew install tmux
+
+# Install wrapper utility to fix issues with tmux
+# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+brew install reattach-to-user-namespace
+
 # Install wget with IRI support
 brew install wget --with-iri
 
@@ -52,7 +59,8 @@ brew install mysql
 brew install dnsmasq
 
 # Install Python tools
-#brew install pyenv
+#brew install python
+brew install pyenv
 
 # Install Ruby tools
 brew install rbenv
@@ -78,6 +86,7 @@ brew install pwgen
 brew install tree
 brew install webkit2png
 brew install ffmpeg --with-faac --with-libvpx --with-x265
+brew install multimarkdown
 
 # Install recovery and security tools
 brew install foremost
@@ -97,6 +106,7 @@ brew install imagemagick --with-libtiff --with-librsvg --with-webp
 brew install imageworsener
 brew install jhead
 brew install jpeg
+brew install jpeg-archive
 brew install jpegoptim
 brew install homebrew/headonly/jpegrescan --HEAD
 brew install libbpg
