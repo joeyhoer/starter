@@ -8,6 +8,11 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until the script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+# Link Homebrew casks in `/Applications` rather than `~/Applications`
+# More configuration options available
+# @see https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md#options
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # Install Cask
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
@@ -44,6 +49,9 @@ brew cask install hosts
 brew cask install qlcolorcode
 brew cask install qlmarkdown
 brew cask install qlstephen
+
+# Install Screen Savers
+brew cask install ios-lockscreen
 
 # Install Color Picker Plugins
 brew cask install colorpicker-developer
