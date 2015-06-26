@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+gem 'sass'
+gem 'compass'
+gem 'image_optim'
+gem 'scss-lint'
