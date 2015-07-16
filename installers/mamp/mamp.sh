@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+APACHE_CONF_DIR="/etc/apache2/"
+
 ################################################################################
 ## DNS Configuration
 
@@ -30,12 +32,30 @@ sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 
 # Add (Homebrew) PHP 5.6 module to Apache configuration
 sudo sed -i '' -E 's%^#LoadModule php5_module .*%&\
-LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so%' /etc/apache2/httpd.conf
+LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so%' ${APACHE_CONF_DIR}/httpd.conf
 
 # Enable PHP LaunchAgent
 mkdir -p ~/Library/LaunchAgents
 ln -sfv /usr/local/opt/php56/*.plist ~/Library/LaunchAgents/
 launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.php56.plist
+
+################################################################################
+## SSL Configuration
+
+# Create SSL Direcotry
+sudo mkdir ${APACHE_CONF_DIR}/ssl
+
+# Generate SSL Certificate
+sudo openssl req \
+  -x509 -nodes -days 3650 -newkey rsa:4096 \
+  -subj "/C=US/ST=Georgia/L=Savannah/O=Gauge Interactive/OU=$(logname)/CN=*.dev" \
+  -keyout "${APACHE_CONF_DIR}/ssl/localhost.key" \
+  -out "${APACHE_CONF_DIR}/ssl/localhost.crt"
+
+# Trust certificate
+sudo security add-trusted-cert \
+  -d -r trustRoot -k "/Library/Keychains/System.keychain" \
+  "${APACHE_CONF_DIR}/ssl/localhost.crt"
 
 ################################################################################
 ## Apache Configuration
@@ -54,7 +74,7 @@ modules=(
 )
 
 for module in "${modules[@]}"; do
-  sudo sed -i '' -E "s/^#(LoadModule $module)/\1/g" /etc/apache2/httpd.conf
+  sudo sed -i '' -E "s/^#(LoadModule $module)/\1/g" ${APACHE_CONF_DIR}/httpd.conf
 done
 
 ## Extras
@@ -65,33 +85,94 @@ extras=(
 )
 
 for extra in "${extras[@]}"; do
-  sudo sed -i '' -E "s%^#(Include /private/etc/apache2/extra/${extra})%\1%g" /etc/apache2/httpd.conf
+  sudo sed -i '' -E "s%^#(Include ${APACHE_CONF_DIR}/extra/${extra})%\1%g" ${APACHE_CONF_DIR}/httpd.conf
 done
 
 # Enable user config files
-sudo sed -i '' -E 's%^#(Include /private/etc/apache2/users/*.conf)%\1%g' /etc/apache2/extra/httpd-userdir.conf
+sudo sed -i '' -E 's%^#(Include ${APACHE_CONF_DIR}/users/*.conf)%\1%g' ${APACHE_CONF_DIR}/extra/httpd-userdir.conf
 
-## User File
-
-# Write user file > /etc/apache2/users/`whoami`.conf
-
+## Create user virtual hosts file
+cat > ${APACHE_CONF_DIR}/users/$(logname).conf <<EOF
+## Default configurations
 ################################################################################
-## SSL Configuration
 
-# Create SSL Direcotry
-sudo mkdir /private/etc/apache2/ssl
+<Directory "${HOME}/Sites/">
+    Options Indexes MultiViews FollowSymLinks Includes
+    AllowOverride All
+    # http://httpd.apache.org/docs/2.4/upgrading.html#run-time
+    Require all granted
+</Directory>
 
-# Generate SSL Certificate
-sudo openssl req \
-  -x509 -nodes -days 3650 -newkey rsa:4096 \
-  -subj "/C=US/ST=Georgia/L=Savannah/O=Gauge Interactive/OU=$(whoami)/CN=*.dev" \
-  -keyout "/private/etc/apache2/ssl/localhost.key" \
-  -out "/private/etc/apache2/ssl/localhost.crt"
 
-# Trust certificate
-sudo security add-trusted-cert \
-  -d -r trustRoot -k "/Library/Keychains/System.keychain" \
-  "/private/etc/apache2/ssl/localhost.crt"
+# Environment Variables
+################################################################################
+
+<IfModule mod_env>
+    # Enable Magento developer mode
+    SetEnv MAGE_IS_DEVELOPER_MODE "1"
+</IfModule>
+
+
+## HTTP/SSL
+################################################################################
+
+<VirtualHost *:80>
+    UseCanonicalName off
+
+    # Handle subdomains
+    # http://httpd.apache.org/docs/2.4/mod/mod_vhost_alias.html#interpol
+    ServerAlias *.*.dev
+    VirtualDocumentRoot ${HOME}/Sites/%-2/%-3+/
+</VirtualHost>
+
+<VirtualHost *:80>
+    UseCanonicalName off
+
+    # Handle subdomains
+    # http://httpd.apache.org/docs/2.4/mod/mod_vhost_alias.html#interpol
+    ServerAlias *.dev
+    VirtualDocumentRoot ${HOME}/Sites/%1/www/
+</VirtualHost>
+
+
+## HTTPS/SSL
+################################################################################
+
+# Listen for secure traffic
+Listen 443
+
+<VirtualHost *:443>
+    UseCanonicalName off
+
+    # Subdomains mapped to subdirectories
+    # http://httpd.apache.org/docs/2.4/mod/mod_vhost_alias.html#interpol
+    ServerAlias *.*.dev
+    VirtualDocumentRoot ${HOME}/Sites/%-2/%-3+/
+
+    # Enable SSL
+    <IfModule mod_ssl.c>
+        SSLEngine on
+        SSLCertificateFile "${APACHE_CONF_DIR}/ssl/localhost.crt"
+        SSLCertificateKeyFile "${APACHE_CONF_DIR}/ssl/localhost.key"
+    </IfModule>
+</VirtualHost>
+
+<VirtualHost *:443>
+    UseCanonicalName off
+
+    # Primary domain mapped to www subdirectory
+    # http://httpd.apache.org/docs/2.4/mod/mod_vhost_alias.html#interpol
+    ServerAlias *.dev
+    VirtualDocumentRoot ${HOME}/Sites/%1/www/
+
+    # Enable SSL
+    <IfModule mod_ssl.c>
+        SSLEngine on
+        SSLCertificateFile "${APACHE_CONF_DIR}/ssl/localhost.crt"
+        SSLCertificateKeyFile "${APACHE_CONF_DIR}/ssl/localhost.key"
+    </IfModule>
+</VirtualHost>
+EOF
 
 ################################################################################
 ## Restart Services
@@ -99,8 +180,8 @@ sudo security add-trusted-cert \
 # Restart Network services
 enabled_services=$(networksetup listallnetworkservices | sed '1d;/^\*/d')
 echo "$enabled_services" | xargs -I {} bash -c '
-  sudo networksetup -setnetworkserviceenabled {} off;
-  sudo networksetup -setnetworkserviceenabled {} on'
+  sudo networksetup -setnetworkserviceenabled "{}" off;
+  sudo networksetup -setnetworkserviceenabled "{}" on'
 
 # Restart apache
 sudo apachectl restart

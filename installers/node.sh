@@ -18,3 +18,5 @@ npm install -g svgo
 npm install -g uglify-js
 npm install -g cssmin
 npm install -g psi
+npm install -g jshint
+npm install -g jscs

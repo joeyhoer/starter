@@ -7,10 +7,26 @@
 ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
 launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
 
-# Secure MySQL Installation
-# http://stackoverflow.com/questions/24270733/shell-script-automate-mysql-secure-installation-with-echo-command
-# mysql_secure_installation
-# Rename root user to current username
-mysql -uroot -p -e "USE mysql; UPDATE user SET user='$(whoami)' WHERE user='root'; FLUSH PRIVILEGES;"
-# Set no password
-# update user set password=PASSWORD('') where user='$(whoami)';
+# Configure MySQL
+mysql -f -uroot -p 2>/dev/null < <( cat <<EOF
+  USE mysql;
+
+  # Secure MySQL Installation
+  # Similar to mysql_secure_installation
+  # Remove the anonymous users
+  DROP USER ''@'localhost';
+  DROP USER ''@'$(hostname)';
+  # Disallow root login remotely
+  DELETE FROM user WHERE user = 'root' AND host NOT IN ('localhost', '127.0.0.1', '::1');
+  # Remove test database
+  DROP DATABASE test;
+
+  # Rename root user to current username
+  UPDATE user SET user = '$(logname)' WHERE user = 'root';
+  # Set password
+  # UPDATE user SET password = PASSWORD('') WHERE user = '$(logname)';
+
+  # Reload privilege tables
+  FLUSH PRIVILEGES;
+EOF
+)
