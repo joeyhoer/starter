@@ -16,5 +16,5 @@ rbenv global $ruby_latest
 # Install gems from Gemfile
 gem install bundler
 rbenv rehash
-bundle install --system
+bundle install --gemfile=installers/homebrew/Gemfile --system
 rbenv rehash

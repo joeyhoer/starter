@@ -16,6 +16,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # Install Cask
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
+#brew tap caskroom/fonts
 
 # Make sure we're using the latest Cask
 brew cask update

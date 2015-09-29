@@ -18,8 +18,8 @@ defaults write NSGlobalDomain AppleHighlightColor -string '0.780400 0.815700 0.8
 # Use Dark menu bar and Dock
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
-# Translucent menu bar - disabled in Yosemite
-# defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
+# Automatically hide and show the menu bar
+defaults write NSGlobalDomain "_HIHideMenuBar" -bool true
 
 # Sidebar icon size
 # Small  : 1

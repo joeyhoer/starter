@@ -4,5 +4,5 @@
 # Xcode                                                                       #
 ###############################################################################
 
-# Request automatic installation of the command line tools
+# Install Xcode command line tools
 xcode-select --install

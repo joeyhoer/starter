@@ -33,7 +33,7 @@ defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Do
 
 # Hide incomplete downloads folder
 mkdir -p "${HOME}/Downloads/Torrents"
-sudo chflags -v hidden "${HOME}/Downloads/Torrents"
+sudo chflags -h hidden "${HOME}/Downloads/Torrents"
 
 # Don’t prompt for confirmation before downloading
 defaults write org.m0k.transmission DownloadAsk -bool false

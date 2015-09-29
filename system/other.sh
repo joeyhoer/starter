@@ -88,3 +88,38 @@ defaults write com.apple.screencapture name -string "screenshot"
 
 # Connecting camera opens (path to application, or '' if no application)
 defaults -currentHost write com.apple.ImageCapture2 HotPlugActionPath -string ''
+
+# Link hidden Applications
+hidden_apps=(
+  'Archive Utility'
+  'Directory Utility'
+  'Screen Sharing'
+  'Network Utility'
+  'Wireless Diagnostics'
+  'Feedback Assistant'
+  'RAID Utility'
+  'System Image Utility'
+)
+
+for app in "${hidden_apps[@]}"; do
+  sudo ln -s "/System/Library/CoreServices/Applications/${app}.app" \
+             "/Applications/Utilities/${app}.app"
+done
+
+hidden_apps=(
+  'Ticket Viewer'
+  'Network Diagnostics'
+)
+
+for app in "${hidden_apps[@]}"; do
+  sudo ln -s "/System/Library/CoreServices/${app}.app" \
+             "/Applications/Utilities/${app}.app"
+done
+
+ # Link hidden prefPanes
+sudo ln -s "/System/Library/CoreServices/Applications/Archive Utility.app/Contents/Resources/Archives.prefPane" \
+    "/Library/PreferencePanes/Archives.prefPane"
+
+# Link hidden command line tools
+sudo ln -s "/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport" \
+           "/usr/sbin/airport"

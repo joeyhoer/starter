@@ -5,10 +5,13 @@
 ###############################################################################
 
 # Install Google Fonts
-mkdir -p "/Library/Fonts/Google Fonts"
-git clone https://github.com/google/fonts.git "/Library/Fonts/Google Fonts"
+GOOGLE_FONTS_DIR='/Library/Fonts/Google Fonts'
+mkdir -p "$GOOGLE_FONTS_DIR"
+if [ ! -d "$GOOGLE_FONTS_DIR"/.git ]; then
+  git clone https://github.com/google/fonts.git "$GOOGLE_FONTS_DIR"
+fi
 
 # Schedule Google Fonts Updates
 (crontab -l 2>/dev/null; echo "0 */6 * * * sh -c \"" \
-    "cd '/Library/Fonts/Google Fonts' && git pull && git clean -dfqx" \
+    "cd '$GOOGLE_FONTS_DIR' && git pull && git clean -dfqx" \
     "\" >/dev/null 2>&1") | crontab -

@@ -113,10 +113,10 @@ cat > ${APACHE_CONF_DIR}/users/$(logname).conf <<EOF
 </IfModule>
 
 
-## HTTP/SSL
+## HTTP `.dev`
 ################################################################################
 
-<VirtualHost *:80>
+<VirtualHost *.dev:80>
     UseCanonicalName off
 
     # Handle subdomains
@@ -125,7 +125,7 @@ cat > ${APACHE_CONF_DIR}/users/$(logname).conf <<EOF
     VirtualDocumentRoot ${HOME}/Sites/%-2/%-3+/
 </VirtualHost>
 
-<VirtualHost *:80>
+<VirtualHost *.dev:80>
     UseCanonicalName off
 
     # Handle subdomains
@@ -135,13 +135,13 @@ cat > ${APACHE_CONF_DIR}/users/$(logname).conf <<EOF
 </VirtualHost>
 
 
-## HTTPS/SSL
+## HTTPS/SSL `.dev`
 ################################################################################
 
 # Listen for secure traffic
 Listen 443
 
-<VirtualHost *:443>
+<VirtualHost *.dev:443>
     UseCanonicalName off
 
     # Subdomains mapped to subdirectories
@@ -157,7 +157,7 @@ Listen 443
     </IfModule>
 </VirtualHost>
 
-<VirtualHost *:443>
+<VirtualHost *.dev:443>
     UseCanonicalName off
 
     # Primary domain mapped to www subdirectory

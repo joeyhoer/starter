@@ -14,6 +14,15 @@ brew update
 # Upgrade any already-installed formulae
 brew upgrade --all
 
+# Install Shells
+# Note: Don't forget to add shells to `/etc/shells` before running `chsh`.
+brew install bash
+brew install zsh
+# brew install bash-completion
+
+# Install wget with IRI support
+brew install wget --with-iri
+
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 #brew install coreutils
@@ -24,11 +33,10 @@ brew upgrade --all
 # Install GNU `sed`, overwriting the built-in `sed`
 #brew install gnu-sed --default-names
 
-# Install Shells
-# Note: Don't forget to add shells to `/etc/shells` before running `chsh`.
-brew install bash
-#brew install bash-completion
-brew install zsh
+# Install more recent versions of some OS X tools
+#brew install vim --override-system-vi
+brew install homebrew/dupes/grep
+brew install homebrew/dupes/screen
 
 # Install Terminal Multiplexer
 brew install tmux
@@ -36,19 +44,6 @@ brew install tmux
 # Install wrapper utility to fix issues with tmux
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 brew install reattach-to-user-namespace
-
-# Install wget with IRI support
-brew install wget --with-iri
-
-# Install RingoJS and Narwhal
-# Note that the order in which these are installed is important; see http://git.io/brew-narwhal-ringo.
-brew install ringojs
-brew install narwhal
-
-# Install more recent versions of some OS X tools
-#brew install vim --override-system-vi
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/screen
 
 # Install server stack
 brew install homebrew/php/php56
@@ -59,10 +54,15 @@ brew install mysql
 brew install dnsmasq
 
 # Install Python tools
-#brew install python
+# Installing python with Homebrew is unnecessary,
+# as python will be installed and managed via pyenv
+# brew install python
 brew install pyenv
 
 # Install Ruby tools
+# Installing ruby with Homebrew is unnecessary,
+# as python will be installed and managed via rbenv
+# brew install ruby
 brew install rbenv
 brew install ruby-build
 
@@ -135,4 +135,4 @@ brew install pixz
 brew install unar
 
 # Remove outdated versions from the cellar
-brew cleanup
+brew cleanup && brew prune

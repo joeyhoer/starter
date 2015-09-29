@@ -14,7 +14,7 @@ chflags nohidden "${HOME}/Library"
 mkdir -p "$HOME/bin"
 
 # Hide user `bin` folder
-chflags hidden "${HOME}/bin"
+chflags -h hidden "${HOME}/bin"
 
 # Quitting via ⌘ + Q; doing so will also hide desktop icons
 #defaults write com.apple.finder QuitMenuItem -bool true
@@ -99,6 +99,9 @@ done
 # List View   : `Nlsv`
 # Column View : `clmv`
 # Cover Flow  : `Flwv`
+# After configuring preferred view style, clear all `.DS_Store` files
+# to ensure settings are applied for every directory
+# sudo find / -name ".DS_Store" --delete
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
 # New window target
