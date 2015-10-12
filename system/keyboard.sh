@@ -16,7 +16,7 @@ defaults write NSGlobalDomain KeyRepeat -int 0
 # Set delay until repeat (in milliseconds)
 # Long: 120
 # Short: 15
-defaults write NSGlobalDomain InitialKeyRepeat -int 5
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Adjust keyboard brightness in low light
 defaults write com.apple.BezelServices kDim -bool true
@@ -43,6 +43,9 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Use smart dashes
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Set Double and Single quotes
+defaults write NSGlobalDomain NSUserQuotesArray -array '"\""' '"\""' '"'\''"' '"'\''"'
 
 # Correct spelling automatically
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false

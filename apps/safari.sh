@@ -192,4 +192,14 @@ defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Hide Toolbar' '@
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Show Toolbar' '@~t'
 
 # Open Bookmarks Group in tabs
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add '\033Bookmarks\033Work\033Open in Tabs' '@$g'
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add '\033Bookmarks\033Work\033Open in New Tabs' '@$g'
+
+# Print
+################################################################################
+
+# Print headers and footers
+defaults write com.apple.Safari PrintHeadersAndFooters -bool false
+
+# Print backgrounds
+defaults write com.apple.Safari WebKitShouldPrintBackgroundsPreferenceKey -bool false
+defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2ShouldPrintBackgrounds" -bool false

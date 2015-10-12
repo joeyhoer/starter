@@ -22,3 +22,9 @@ defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnab
 
 # Show To/Cc label in message list
 defaults write com.apple.mail EnableToCcInMessageList -bool true
+
+# Sort Inbox by unread
+sudo /usr/libexec/PlistBuddy                                               \
+    -c "Delete :InboxViewerAttributes:SortOrder"                           \
+    -c "Add    :InboxViewerAttributes:SortOrder       string 'readstatus'" \
+    ~/Library/Containers/com.apple.mail/Data/Library/Preferences/com.apple.mail.plist

@@ -71,13 +71,19 @@ defaults write com.apple.screencapture location -string "$HOME/Pictures"
 defaults write com.apple.screencapture type -string "png"
 
 # Shadow in screenshots
-defaults write com.apple.screencapture disable-shadow -bool false
+defaults write com.apple.screencapture disable-shadow -bool true
 
 # Include date in screenshots
-# defaults write com.apple.screencapture include-date -bool false
+defaults write com.apple.screencapture include-date -bool true
 
 # Base name of screenshots
-defaults write com.apple.screencapture name -string "screenshot"
+defaults write com.apple.screencapture name -string "screen"
+
+# Randomize screenshot names
+# @link http://blog.stefanxo.com/2014/02/random-screenshot-names-on-mac-os-x/
+#( crontab -l 2>/dev/null; \
+#  echo "* * * * * openssl rand -base64 5 | base64 | cut -c1-5 | xargs defaults write com.apple.screencapture name" ) \
+#  | crontab -
 
 # Screenshot filename format
 # This is *could* be dangerous, it modifies core system files
@@ -117,9 +123,11 @@ for app in "${hidden_apps[@]}"; do
 done
 
  # Link hidden prefPanes
-sudo ln -s "/System/Library/CoreServices/Applications/Archive Utility.app/Contents/Resources/Archives.prefPane" \
-    "/Library/PreferencePanes/Archives.prefPane"
+sudo ln -s '/System/Library/CoreServices/Applications/Archive Utility.app/Contents/Resources/Archives.prefPane' \
+           '/Library/PreferencePanes/Archives.prefPane'
 
 # Link hidden command line tools
-sudo ln -s "/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport" \
-           "/usr/sbin/airport"
+sudo ln -s '/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport' \
+           '/usr/sbin/airport'
+sudo ln -s '/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc' \
+           '/usr/local/bin/jsc'

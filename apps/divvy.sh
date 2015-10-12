@@ -4,7 +4,7 @@
 # Divvy                                                                       #
 ###############################################################################
 
-# Disable smart quotes as it’s annoying for code tweets
+# Hide menu icon
 defaults write com.mizage.direct.Divvy showMenuIcon -bool false
 
 # Set grid

@@ -53,7 +53,7 @@ EOD
 #defaults write org.x.X11 wm_ffm -bool true
 
 # Audible and Visual Bells
-/usr/libexec/PlistBuddy -x                                  \
+/usr/libexec/PlistBuddy                                     \
     -c "Delete :WindowSettings:Basic:Bell"                  \
     -c "Add    :WindowSettings:Basic:Bell       bool false" \
     -c "Delete :WindowSettings:Basic:VisualBell"            \

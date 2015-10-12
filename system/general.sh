@@ -29,7 +29,7 @@ defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 
 # Scroll bar visibility
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
-defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 
 # Smooth scrolling
 # Disable on older Macs

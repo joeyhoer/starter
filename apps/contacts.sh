@@ -42,3 +42,11 @@ defaults write com.apple.AddressBook ABIncludeNotesInVCard -bool false
 
 # Export photos in vCards
 defaults write com.apple.AddressBook ABIncludePhotosInVCard -bool false
+
+# Show first name:
+# 1: Before last name
+# 2: Following last name
+defaults write NSGlobalDomain NSPersonNameDefaultDisplayNameOrder -int 1
+
+# Prefer nicknames
+defaults write NSGlobalDomain NSPersonNameDefaultShouldPreferNicknamesPreference -bool true

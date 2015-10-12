@@ -5,4 +5,4 @@
 ###############################################################################
 
 # Install Xcode command line tools
-xcode-select --install
+xcode-select --install  2>/dev/null

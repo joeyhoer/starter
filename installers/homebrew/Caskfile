@@ -43,6 +43,15 @@ brew cask install vlc
 brew cask install webkit-nightly
 brew cask install xquartz
 
+# Install Virtualization Software
+brew cask install vmware-fusion
+brew cask install vagrant
+brew cask install vagrant-manager
+
+# Install Popcorn Time
+brew tap popcorn-time/homebrew-cask https://git.popcorntime.io/caskroom/homebrew-cask.git
+brew cask install popcorn-time
+
 # Install Preference Panes
 brew cask install hosts
 
@@ -59,6 +68,10 @@ brew cask install colorpicker-developer
 
 # Install others
 brew cask install hashcat
+
+# Install non-standard casks
+brew tap joeyhoer/homebrew-extras
+brew cask install font-microsoft-office
 
 # Remove outdated versions from the cellar
 brew cask cleanup

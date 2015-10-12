@@ -25,15 +25,22 @@
 
 # Force Click and haptic feedback
 defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool true
-defaults write com.AppleMultitouchTrackpad ActuateDetents -bool true
-defaults write com.AppleMultitouchTrackpad ForceSuppressed -bool false
+defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool false
+defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool true
+
+# Silent clicking
+defaults write com.apple.AppleMultitouchTrackpad ActuationStrength -int 0
 
 # Haptic feedback
 # 0: Light
 # 1: Medium
 # 2: Firm
-defaults write com.AppleMultitouchTrackpad FirstClickThreshold -int 0
-defaults write com.AppleMultitouchTrackpad SecondClickThreshold -int 0
+defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 0
+defaults write com.apple.AppleMultitouchTrackpad SecondClickThreshold -int 0
 
 # Tracking Speed
-defaults write NSGlobalDomain com.apple.trackpad.scaling -float 1
+# 0: Slow
+# 3: Fast
+defaults write NSGlobalDomain com.apple.trackpad.scaling -float 2.5
+
+defaults write NSGlobalDomain com.apple.trackpad.forceClick

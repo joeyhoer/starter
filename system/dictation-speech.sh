@@ -5,7 +5,15 @@
 ###############################################################################
 
 # Enable Dictation
+defaults write com.apple.assistant.support "Assistant Enabled" -bool true
 defaults write com.apple.assistant.support "Dictation Enabled" -bool true
+defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
+  DictationIMMasterDictationEnabled -bool true
+
+# Use Enhanced Dictation
+# Allows offline use and continuous dictation with live feedback
+defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
+  DictationIMUseOnlyOfflineDictation -bool true
 
 # Enable Text to Speech
 defaults write com.apple.speech.synthesis.general.prefs SpokenUIUseSpeakingHotKeyFlag -bool true
