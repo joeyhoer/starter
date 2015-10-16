@@ -20,18 +20,29 @@ The most common location for defaults is `~/Library/Preferences`, thought they m
 
 __Note:__ `NSGlobalDomain` defaults are located in a `.GlobalPreferences.plist` file in the `~/Library/Preferences` directory.
 
-One method of locating defaults is to navigate into the `~/Library/Preferences` directory on the command line, change the desired settings of an application, and run the following command:
+### Application Domains
+
+An application _domain_, also called _bundle identifier_, is used by OS X to associate various settings to an application. Generally, there preference files are located in the `~/Library/Preferences` directory. You can determine an application's domain using the following shell function:
+
+    bundleid() {
+      # Accept multiple forms of input
+      osascript -e "id of app \"$*\"" 2>/dev/null || /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' "$1/Contents/Info.plist"
+    }
+
+__Note:__ To learn more about application domains consult the `defaults` command's manual.
+
+Another method of locating defaults is to navigate into the `~/Library/Preferences` directory on the command line, change the desired settings of an application, and run the following command:
 
     ls -1ta | head -8
 
-This will return a list of plist files. Somewhere near the top of the list should be a plist file that corresponds to the application you are searching for. Stirpping the `.plist` extension from the filename will give the applications _domain_. To learn more about domains consult the `defaults` commannd's manual.
+This will return a list of plist files. Stripping the `.plist` extension from the filename will give the application's domain.
 
-Once the applications domain has been acquired, run the following command to store the current defaults into a variable (where `$domain` is the application's domain):
+Once the applications domain has been acquired, store the current defaults into a variable with (where `$domain` is the application's domain):
 
     prev_defaults=$(defaults read $domain)
 
-Next, change some settings within the application and run (again, where `$domain` is the application's domain):
+Then, change a setting within the application and run (again, where `$domain` is the application's domain):
 
     comm -13 <(echo "$prev_defaults") <(defaults read $domain)
 
-This will return the current values of the settings you've changed.
+This will return the current values of the settings that were changed changed.

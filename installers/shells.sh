@@ -7,7 +7,7 @@
 # Add shells installed by Homebrew
 sudo bash -c "which zsh bash >> /etc/shells"
 
-# Set default shell
+# Set default shell for the current user
 chsh -s $(which zsh)
 
 # Create antigen directory
