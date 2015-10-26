@@ -36,7 +36,7 @@ sudo defaults write /Library/Preferences/com.apple.driver.AppleIRController Devi
 #sudo defaults write /Library/Preferences/com.apple.virtualMemory DisableEncryptedSwap -boolean yes
 
 ###############################################################################
-# FileValult                                                                  #
+# FileVault                                                                   #
 ###############################################################################
 
 # Enable FileVault (if not already enabled)
@@ -48,3 +48,41 @@ fi
 
 # Disable automatic login when FileVault is enabled
 #sudo defaults write /Library/Preferences/com.apple.loginwindow DisableFDEAutoLogin -bool true
+
+###############################################################################
+# Privacy                                                                     #
+# Privacy should be handled within each applications configuration,           #
+# this will serve as the master example                                       #
+###############################################################################
+
+# Databases located at:
+#   /Library/Application\ Support/com.apple.TCC/TCC.db
+#   ~/Library/Application\ Support/com.apple.TCC/TCC.db
+
+# All           : kTCCServiceAll
+# Accessibility : kTCCServiceAccessibility
+# Calendar      : kTCCServiceCalendar
+# Contacts      : kTCCServiceAddressBook
+# Location      : kTCCServiceLocation
+# Reminders     : kTCCServiceReminders
+# Facebook      : kTCCServiceFacebook
+# LinkedIn      : kTCCServiceLinkedIn
+# Twitter       : kTCCServiceTwitter
+# SinaWeibo     : kTCCServiceSinaWeibo
+# Liverpool     : kTCCServiceLiverpool
+# Ubiquity      : kTCCServiceUbiquity
+# TencentWeibo  : kTCCServiceTencentWeibo
+
+# service | client | client_type | allowed | prompt_count | csreq | policy_id
+
+# Grant access
+# sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db \
+#   "INSERT INTO access VALUES(${service},${bundle_id},0,1,1,NULL);"
+
+# Reset access
+# sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db \
+#   "DELETE FROM access WHERE client CLIENT '${bundle_id}';"
+
+# Revoke access
+# sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db \
+#   "INSERT INTO access VALUES(${service},${bundle_id},0,0,1,NULL);"

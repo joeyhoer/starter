@@ -13,6 +13,7 @@ npm install -g autoprefixer
 npm install -g browser-sync
 npm install -g grunt-cli
 npm install -g jscrush
+npm install -g modernizr
 npm install -g packer
 npm install -g svgo
 npm install -g uglify-js

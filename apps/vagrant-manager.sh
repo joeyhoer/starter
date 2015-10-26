@@ -47,3 +47,6 @@ defaults write lanayo.vagrant-manager updateStability -string "stable"
 
 # Send anonymous profile data
 defaults write lanayo.vagrant-manager SUSendProfileInfo -bool true
+
+# Require option key for destroy
+defaults write lanayo.vagrant-manager optionKeyDestroy -bool true

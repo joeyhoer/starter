@@ -138,6 +138,8 @@ brew install xz
 brew install pxz # Depends on gcc to compile
 brew install pixz
 brew install unar
+brew install lz4
+brew install snappy
 
 # Install non-standard tools
 brew tap joeyhoer/homebrew-extras

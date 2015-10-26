@@ -46,3 +46,7 @@ sudo systemsetup -setcomputersleep off > /dev/null
 
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
+
+# Play iOS charging sound when power is connected
+defaults write com.apple.PowerChime ChimeOnAllHardware -bool true && \
+  open /System/Library/CoreServices/PowerChime.app &
