@@ -85,12 +85,21 @@ defaults write com.apple.screencapture name -string "screen"
 #  echo "* * * * * openssl rand -base64 5 | base64 | cut -c1-5 | xargs defaults write com.apple.screencapture name" ) \
 #  | crontab -
 
-# Screenshot filename format
-# This is *could* be dangerous, it modifies core system files
-# %1$@ name (default: Screen Shot)
-# %2$@ date (default: yyyy-MM-dd)
-# %3$@ time (default: System "Medium" time, which must be changed globally)
-# cat /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings | plutil -convert xml1 -o /dev/stdout - | sed 's/<string>%@ %@ at %@<\/string>/<string>%@-%@-%@<\/string>/' | sudo plutil -convert binary1 -o /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings -
+# Screenshot filename format:
+# This is *could* be dangerous, it modifies core system files:
+#   %@ %@ at %@:
+#     %1$@ name (default: Screen Shot)
+#     %2$@ date (default: yyyy-MM-dd)
+#     %3$@ time (default: System "Medium" time, which must be changed globally)
+
+#screencapturestrings='/System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings'
+#sudo plutil -convert xml1 "$screencapturestrings" -o - | \
+#    sed -e 's#<string>%@ %@ at %@</string>#<string>%@%@%@</string>#'  \
+#        -e 's#<string>-</string>#<string></string>#' \
+#        -e 's#<string>.</string>#<string></string>#' \
+#        -e 's#<string>%@ %@</string>#<string>%@ %@</string>#' \
+#        -e 's#<string>yyyy-MM-dd</string>#<string>yyyy-MM-dd</string>#' | \
+#    sudo plutil -convert binary1 -o "$screencapturestrings" -
 
 # Connecting camera opens (path to application, or '' if no application)
 defaults -currentHost write com.apple.ImageCapture2 HotPlugActionPath -string ''

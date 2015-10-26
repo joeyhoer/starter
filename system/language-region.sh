@@ -4,7 +4,7 @@
 # Language & Region                                                           #
 ###############################################################################
 
-# Prefered languages (in order of preference) 
+# Prefered languages (in order of preference)
 defaults write NSGlobalDomain AppleLanguages -array "en"
 
 # Currency
@@ -15,6 +15,10 @@ defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
 # Measure Units
 # `Inches` or `Centimeters`
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
+
+# Force 12/24 hour time
+#defaults write NSGlobalDomain AppleICUForce12HourTime -bool true
+defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
 
 # Set Metric Units
 defaults write NSGlobalDomain AppleMetricUnits -bool true
