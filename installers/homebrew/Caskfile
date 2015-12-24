@@ -25,6 +25,7 @@ brew cask update
 brew cask install adapter
 brew cask install adobe-creative-cloud
 brew cask install airdisplay
+brew cask install bartender
 brew cask install dropbox
 brew cask install firefox
 brew cask install firefoxdeveloperedition
@@ -64,7 +65,7 @@ brew cask install qlstephen
 brew cask install ios-lockscreen
 
 # Install Color Picker Plugins
-brew cask install colorpicker-developer
+brew cask install colorpicker-skalacolor
 
 # Install others
 brew cask install hashcat

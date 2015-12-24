@@ -51,7 +51,8 @@ brew install homebrew/php/php56
 brew install homebrew/php/php56-opcache
 brew install homebrew/php/php56-apcu
 brew install homebrew/php/php56-mcrypt
-brew install mysql
+# brew install mysql
+brew install percona-server
 brew install dnsmasq
 
 # Install Python tools
@@ -69,6 +70,7 @@ brew install ruby-build
 
 # Install network tools
 brew install namebench
+brew install wifi-password
 
 # Install JS tools
 brew install node # This installs `npm` too using the recommended installation method

@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Total Terminal                                                              #
+# TotalTerminal                                                               #
+# Note: To enable TotalTerminal in OS X 10.11, SIP mut be disabled.           #
+# To disable SIP, boot into the Recover Partition and run the                 #
+# following commands:                                                         #
+#     csrutil disable                                                         #
+#     csrutil enable --without fs                                             #
+# This will disable only filesystem integrity protection.                     #
 ###############################################################################
 
 # Slide Visor when Terminal is activated

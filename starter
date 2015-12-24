@@ -10,8 +10,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 PREF_FILES=()
 AFFECTED_APPS=()
 
+# Source lib tools
+source 'lib/loginitem.sh'
+
 # Add preference file followed by any number of affected applications
-function set_prefs() {
+function set_prefs {
   PREF_FILES+=("apps/$1.sh")
   shift
   AFFECTED_APPS+=("$@")
@@ -21,7 +24,7 @@ function set_prefs() {
 function source_prefs {
   for file in "${PREF_FILES[@]}"; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
-  done;
+  done
 }
 
 # Check for open application
@@ -61,7 +64,7 @@ function quit_apps {
   done
 }
 
-#
+# Prompt if user wants to restart the machine
 function prompt_restart {
   echo "Done. Note that some of these changes require a logout/restart to take effect."
   read -p "Would you like to restart the computer now? [Y/n] " -r
@@ -113,12 +116,12 @@ system_preferences=(
 )
 
 for pane in "${system_preferences[@]}"; do
-    PREF_FILES+=("system/${pane}.sh")
-done;
+  PREF_FILES+=("system/${pane}.sh")
+done
 
 for pane in "cfprefsd" "SystemUIServer" "Dock" "SpeechSynthesisServer"; do
-    AFFECTED_APPS+=("$pane")
-done;
+  AFFECTED_APPS+=("$pane")
+done
 
 # Default Apps
 set_prefs activity-monitor "Activity Monitor"

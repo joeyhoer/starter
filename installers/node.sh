@@ -7,6 +7,9 @@
 # Node and npm *should* be installed at this point
 hash npm 2>/dev/null || echo "Please install npm before continuing"
 
+# Update npm
+npm update -g npm
+
 # Install Node packages
 npm install -g a11y
 npm install -g autoprefixer
@@ -15,6 +18,7 @@ npm install -g grunt-cli
 npm install -g jscrush
 npm install -g modernizr
 npm install -g packer
+npm install -g psi
 npm install -g svgo
 npm install -g uglify-js
 npm install -g cssmin

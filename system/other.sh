@@ -140,3 +140,6 @@ sudo ln -s '/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Curr
            '/usr/sbin/airport'
 sudo ln -s '/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc' \
            '/usr/local/bin/jsc'
+
+# Enable Folder Actions
+defaults write com.apple.FolderActionsDispatcher folderActionsEnabled -bool false

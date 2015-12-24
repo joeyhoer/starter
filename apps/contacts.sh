@@ -8,9 +8,9 @@
 #defaults write com.apple.AddressBook ABShowDebugMenu -bool true
 
 # Show first name
-# false: Before last name
-# true: Following last name
-defaults write com.apple.AddressBook ABNameDisplay -bool true
+# false : Before last name
+# true  : Following last name
+defaults write com.apple.AddressBook ABNameDisplay -bool false
 
 # Sort by
 defaults write com.apple.AddressBook ABNameSortingFormat -string "sortingLastName sortingFirstName"
@@ -21,7 +21,7 @@ defaults write com.apple.AddressBook ABNameSortingFormat -string "sortingLastNam
 # 2: First Initial & Last Name
 # 3: First Name Only
 # 4: Last Name Only
-defaults write com.apple.AddressBook ABShortNameStyle -int 0
+defaults write com.apple.AddressBook ABShortNameStyle -int 2
 
 # Prefer nicknames
 defaults write com.apple.AddressBook ABShortNamePrefersNickname -bool true
@@ -30,8 +30,8 @@ defaults write com.apple.AddressBook ABShortNamePrefersNickname -bool true
 defaults write com.apple.AddressBook ABDefaultAddressCountryCode -string "us"
 
 # vCard Format
-# false: 3.0
-# true: 2.1
+# falsec: 3.0
+# true  : 2.1
 defaults write com.apple.AddressBook ABUse21vCardFormat -bool false
 
 # Enable private me card

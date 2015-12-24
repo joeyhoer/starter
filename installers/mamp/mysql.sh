@@ -3,12 +3,17 @@
 ################################################################################
 ## MySQL Configuration
 
+mysql_pkg=mysql
+
+# Use percona as a drop-in replacement, if available
+[ -n "$(brew ls --versions percona-server)" ] && mysql_pkg=percona-server
+
 # Enable MySQL LaunchAgent
-ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+ln -sfv /usr/local/opt/${mysql_pkg}/*.plist ~/Library/LaunchAgents
+launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.${mysql_pkg}.plist
 
 # Configure MySQL
-mysql -f -uroot -p 2>/dev/null < <( cat <<EOF
+mysql -f -uroot 2>/dev/null < <( cat <<EOF
   USE mysql;
 
   # Secure MySQL Installation

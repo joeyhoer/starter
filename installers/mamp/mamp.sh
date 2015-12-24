@@ -48,7 +48,7 @@ sudo mkdir ${APACHE_CONF_DIR}/ssl
 # Generate SSL Certificate
 sudo openssl req \
   -x509 -nodes -days 3650 -newkey rsa:4096 \
-  -subj "/C=US/ST=Georgia/L=Savannah/O=Gauge Interactive/OU=$(logname)/CN=*.dev" \
+  -subj "/C=US/ST=/L=/O=/OU=$(logname)/CN=*.dev" \
   -keyout "${APACHE_CONF_DIR}/ssl/localhost.key" \
   -out "${APACHE_CONF_DIR}/ssl/localhost.crt"
 
@@ -63,6 +63,10 @@ sudo security add-trusted-cert \
 ## Modules
 
 # Enable Apache modules
+
+# join helper function
+function join { local IFS="$1"; shift; echo "$*"; }
+
 modules=(
   userdir_module
   vhost_alias_module
@@ -73,9 +77,7 @@ modules=(
   ratelimit_module
 )
 
-for module in "${modules[@]}"; do
-  sudo sed -i '' -E "s/^#(LoadModule $module)/\1/g" ${APACHE_CONF_DIR}/httpd.conf
-done
+sudo sed -i '' -E "s/^#(LoadModule ($(join '|' ${modules[@]})))/\1/g" ${APACHE_CONF_DIR}/httpd.conf
 
 ## Extras
 
@@ -84,12 +86,10 @@ extras=(
   httpd-userdir.conf
 )
 
-for extra in "${extras[@]}"; do
-  sudo sed -i '' -E "s%^#(Include ${APACHE_CONF_DIR}/extra/${extra})%\1%g" ${APACHE_CONF_DIR}/httpd.conf
-done
+sudo sed -i '' -E "s%^#(Include .*/extra/($(join '|' ${extras[@]})))%\1%g" ${APACHE_CONF_DIR}/httpd.conf
 
 # Enable user config files
-sudo sed -i '' -E 's%^#(Include ${APACHE_CONF_DIR}/users/*.conf)%\1%g' ${APACHE_CONF_DIR}/extra/httpd-userdir.conf
+sudo sed -i '' -E 's%^#(Include .*/users/\*.conf)%\1%g' ${APACHE_CONF_DIR}/extra/httpd-userdir.conf
 
 ## Create user virtual hosts file
 cat > ${APACHE_CONF_DIR}/users/$(logname).conf <<EOF
@@ -113,7 +113,7 @@ cat > ${APACHE_CONF_DIR}/users/$(logname).conf <<EOF
 </IfModule>
 
 
-## HTTP `.dev`
+## HTTP '.dev'
 ################################################################################
 
 <VirtualHost *.dev:80>
@@ -135,7 +135,7 @@ cat > ${APACHE_CONF_DIR}/users/$(logname).conf <<EOF
 </VirtualHost>
 
 
-## HTTPS/SSL `.dev`
+## HTTPS/SSL '.dev'
 ################################################################################
 
 # Listen for secure traffic
