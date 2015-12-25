@@ -10,6 +10,42 @@ defaults write com.brettterpstra.marked2 showStylePicker -bool false
 # Show overview on launch
 defaults write com.brettterpstra.marked2 showQuickOverviewOnLaunch -bool false
 
+# General
+###############################################################################
+
+# Keep new windows on top
+defaults write com.brettterpstra.marked2 floatNewWindows -bool false
+
+# Raise window on update
+defaults write com.brettterpstra.marked2 raiseWindowOnUpdate -bool false
+
+# Quit after closing last window
+defaults write com.brettterpstra.marked2 terminateAfterLastWindowClosed -bool false
+
+# Translucent in background
+defaults write com.brettterpstra.marked2 transparentInBackground -bool false
+
+# Background transparency level
+defaults write com.brettterpstra.marked2 alphaLevel -float 0.75
+
+# Disable memory-intensive features on large documents
+defaults write com.brettterpstra.marked2 minimalJavaScript -bool true
+
+# Show work count
+defaults write com.brettterpstra.marked2 showWordCount -bool true
+
+# Word count excludes blockquotes
+defaults write com.brettterpstra.marked2 excludeBlockQuotesFromCounts -bool true
+
+# Word count excludes image captions
+defaults write com.brettterpstra.marked2 excludeCaptionsFromCounts -bool true
+
+# Word count excludes footnotes/citations
+defaults write com.brettterpstra.marked2 excludeFootnotesFromCounts -bool true
+
+# Word count excludes indented code blocks
+defaults write com.brettterpstra.marked2 excludeVerbatimFromCounts -bool true
+
 # Preview
 ###############################################################################
 
@@ -110,3 +146,130 @@ defaults write com.brettterpstra.marked2 githubNewlines -bool true
 
 # Render Github checkboxes
 defaults write com.brettterpstra.marked2 convertGithubCheckboxes -bool true
+
+# Apps
+###############################################################################
+
+# Text editor
+defaults write com.brettterpstra.marked2 externalEditor -string "Sublime Text"
+
+# Edit new files automatically
+defaults write com.brettterpstra.marked2 openNewFilesInEditor -bool false
+
+# Links to text files should open in:
+# 0: ask me each time
+# 1: the current window
+# 2: a new Marked window
+# 3: their default application
+# 4: reveal in Finder
+# 5: edit in "Edit with" application
+defaults write com.brettterpstra.marked2 mdLinkBehavior -int 5
+
+# Image editor
+defaults write com.brettterpstra.marked2 externalImageEditor -string "Preview"
+
+# Proofing
+###############################################################################
+
+# Enable CriticMarkup automatically when syntax is detected
+defaults write com.brettterpstra.marked2 shouldDetectCritic -bool true
+
+# Minimum occurances to consider repeat
+defaults write com.brettterpstra.marked2 minimumRepeats -int 3
+
+# Export
+###############################################################################
+
+# Disable links/highlights when exporting PDF and Printing
+defaults write com.brettterpstra.marked2 suppressPrintLinks -bool true
+
+# Include URL as text annotation
+defaults write com.brettterpstra.marked2 hrefAfterLinkTextforPrint -bool true
+
+# Replace horizontal rules with page breaks
+defaults write com.brettterpstra.marked2 hrIsPageBreak -bool true
+
+# Allow page breaks in code blocks
+defaults write com.brettterpstra.marked2 allowPageBreakInCode -bool true
+
+# Embed images when copying HTML
+defaults write com.brettterpstra.marked2 embedImagesInHTMLCopy -bool true
+
+# Print background colors and images
+defaults write com.brettterpstra.marked2 printBackgrounds -bool true
+
+# Prevent orphaned headlines
+defaults write com.brettterpstra.marked2 fixOrphans -bool true
+
+# Add page breaks before H1
+defaults write com.brettterpstra.marked2 h1IsPageBreak -bool true
+
+# Exclude page break before first H1
+defaults write com.brettterpstra.marked2 firstH1IsPageBreak -bool true
+
+# Add page breaks before H2
+defaults write com.brettterpstra.marked2 h2IsPageBreak -bool true
+
+# Add page breaks before footnotes
+defaults write com.brettterpstra.marked2 breakBeforeFootnotes -bool true
+
+# Indicate page breaks in preview
+defaults write com.brettterpstra.marked2 showPageBreaksInPreview -bool true
+
+# Custom font size for export/print
+defaults write com.brettterpstra.marked2 overrideBaseFontSize -bool true
+defaults write com.brettterpstra.marked2 defaultPrintFontSize -float 10
+
+# Header/footer font
+defaults write com.brettterpstra.marked2 headerFooterFont -strong "Helvetica"
+
+# Header/footer font size
+defaults write com.brettterpstra.marked2 headerFooterFontSize -int 12
+
+# Header and footer content
+defaults write com.brettterpstra.marked2 printHeaderTopLeft -string ""
+defaults write com.brettterpstra.marked2 printHeaderTopRight -string ""
+defaults write com.brettterpstra.marked2 printHeaderBottomLeft -string ""
+defaults write com.brettterpstra.marked2 printHeaderBottomRight -string "%page"
+
+# Print header/footer on first page
+defaults write com.brettterpstra.marked2 printHeaderFooterFirstPage -bool false
+
+# Print border below header
+defaults write com.brettterpstra.marked2 printBorderBelowHeader -bool true
+
+# Print border above footer
+defaults write com.brettterpstra.marked2 printBorderAboveFooter -bool true
+
+# Print table of contents
+defaults write com.brettterpstra.marked2 printTOC -bool false
+
+# Page break after table of contents
+defaults write com.brettterpstra.marked2 breakAfterTOC -bool false
+
+# Print margins:
+defaults write com.brettterpstra.marked2 topPrintMargin -float 30
+defaults write com.brettterpstra.marked2 rightPrintMargin -float 30
+defaults write com.brettterpstra.marked2 leftPrintMargin -float 30
+defaults write com.brettterpstra.marked2 bottomPrintMargin -float 30
+
+# Advanced
+###############################################################################
+
+# Strip MMD3 Metadata headers
+defaults write com.brettterpstra.marked2 removeMetadataForPreview -bool true
+
+# YAML Formatter: Remove before rendering
+defaults write com.brettterpstra.marked2 removeYAMLHeaders -bool false
+
+# YAML Formatter: Treat as MMD Meta
+defaults write com.brettterpstra.marked2 convertYAMLToMMD -bool true
+
+# Analyze readability statistics
+defaults write com.brettterpstra.marked2 analyzeReadability -bool true
+
+# Use system-wide Find pasterbaord
+defaults write com.brettterpstra.marked2 useSystemFindPasteboard -bool true
+
+# Use cmd-E for Find With Selection
+defaults write com.brettterpstra.marked2 swapCommandE -bool false
