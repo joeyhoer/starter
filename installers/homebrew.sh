@@ -10,7 +10,7 @@ if ! hash brew 2>/dev/null; then
 fi
 
 # Schedule Homebrew Updates
-(crontab -l 2>/dev/null; echo "0 */6 * * * /usr/local/bin/brew update >/dev/null 2>&1") | crontab -
+(crontab -l 2>/dev/null; echo "0 */6 * * * /usr/local/bin/brew update &>/dev/null") | crontab -
 
 # Install command-line tools using Homebrew
 source installers/homebrew/Brewfile

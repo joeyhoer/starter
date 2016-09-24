@@ -96,10 +96,35 @@ cat > ${APACHE_CONF_DIR}/users/$(logname).conf <<EOF
 ## Default configurations
 ################################################################################
 
+# Set default charset
+AddDefaultCharset utf-8
+
+# Remove "charset=iso-8859-1" from error documents
+# https://httpd.apache.org/docs/trunk/env.html#suppress-error-charset
+SetEnvIf Host ^ suppress-error-charset
+
+# Reduce information presented in server headers
+ServerTokens ProductOnly
+ServerSignature Off
+
+# Disable server response headers
+<IfModule mod_headers.c>
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Add map to force lowercase URLs
+    RewriteMap lowercase int:tolower
+</IfModule>
+
 <Directory "${HOME}/Sites/">
     Options Indexes MultiViews FollowSymLinks Includes
-    AllowOverride All
+
     # http://httpd.apache.org/docs/2.4/upgrading.html#run-time
+    AllowOverride All
     Require all granted
 </Directory>
 
@@ -113,63 +138,65 @@ cat > ${APACHE_CONF_DIR}/users/$(logname).conf <<EOF
 </IfModule>
 
 
-## HTTP '.dev'
+## Automatic HTTP Mapping
 ################################################################################
 
-<VirtualHost *.dev:80>
+<VirtualHost *:80>
     UseCanonicalName off
 
     # Handle subdomains
     # http://httpd.apache.org/docs/2.4/mod/mod_vhost_alias.html#interpol
-    ServerAlias *.*.dev
+    ServerAlias *.*.*
+    # Alternatively grab domain name and the tld with:
+    # %-2.0.%-1.0
     VirtualDocumentRoot ${HOME}/Sites/%-2/%-3+/
 </VirtualHost>
 
-<VirtualHost *.dev:80>
+<VirtualHost *:80>
     UseCanonicalName off
 
     # Handle subdomains
     # http://httpd.apache.org/docs/2.4/mod/mod_vhost_alias.html#interpol
-    ServerAlias *.dev
+    ServerAlias *.*
     VirtualDocumentRoot ${HOME}/Sites/%1/www/
 </VirtualHost>
 
 
-## HTTPS/SSL '.dev'
+## Automatic HTTPS/SSL Mapping
 ################################################################################
 
 # Listen for secure traffic
 Listen 443
 
-<VirtualHost *.dev:443>
+<VirtualHost *:443>
     UseCanonicalName off
 
     # Subdomains mapped to subdirectories
     # http://httpd.apache.org/docs/2.4/mod/mod_vhost_alias.html#interpol
-    ServerAlias *.*.dev
+    ServerAlias *.*.*
     VirtualDocumentRoot ${HOME}/Sites/%-2/%-3+/
 
     # Enable SSL
     <IfModule mod_ssl.c>
         SSLEngine on
-        SSLCertificateFile "${APACHE_CONF_DIR}/ssl/localhost.crt"
-        SSLCertificateKeyFile "${APACHE_CONF_DIR}/ssl/localhost.key"
+        SSLCertificateFile    ${APACHE_CONF_DIR}/ssl/localhost.crt
+        SSLCertificateKeyFile ${APACHE_CONF_DIR}/ssl/localhost.key
     </IfModule>
 </VirtualHost>
 
-<VirtualHost *.dev:443>
+<VirtualHost *:443>
     UseCanonicalName off
 
     # Primary domain mapped to www subdirectory
     # http://httpd.apache.org/docs/2.4/mod/mod_vhost_alias.html#interpol
-    ServerAlias *.dev
+    ServerAlias *.*
     VirtualDocumentRoot ${HOME}/Sites/%1/www/
 
     # Enable SSL
     <IfModule mod_ssl.c>
         SSLEngine on
-        SSLCertificateFile "${APACHE_CONF_DIR}/ssl/localhost.crt"
-        SSLCertificateKeyFile "${APACHE_CONF_DIR}/ssl/localhost.key"
+        SSLCertificateFile    ${APACHE_CONF_DIR}/ssl/localhost.crt
+        SSLCertificateKeyFile ${APACHE_CONF_DIR}/ssl/localhost.key
     </IfModule>
 </VirtualHost>
 EOF

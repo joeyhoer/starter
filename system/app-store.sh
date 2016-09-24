@@ -16,7 +16,7 @@ sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticDownl
 # Install app updates
 sudo defaults write /Library/Preferences/com.apple.commerce AutoUpdate -bool true
 
-# Install OSX updates
+# Install macOS updates
 sudo defaults write /Library/Preferences/com.apple.commerce AutoUpdateRestartRequired -bool true
 
 # Install system data files and security updates

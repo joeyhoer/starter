@@ -66,3 +66,17 @@ defaults write com.apple.loginwindow PowerButtonSleepsSystem -bool false
 # Note: When adding shortcuts for nested options, entries must begin with
 # the '\033' escape sequence, in addition to seperating the options.
 # (e.g. '\033Edit\033Find\033Find Next")
+
+
+# Dictation
+###############################################################################
+
+# Enable Dictation
+defaults write com.apple.assistant.support "Dictation Enabled" -bool true
+defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
+  DictationIMMasterDictationEnabled -bool true
+
+# Use Enhanced Dictation
+# Allows offline use and continuous dictation with live feedback
+defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
+  DictationIMUseOnlyOfflineDictation -bool true

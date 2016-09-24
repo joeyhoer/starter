@@ -26,6 +26,9 @@ defaults write NSGlobalDomain QLPanelAnimationDuration -float 0
 # Opening and closing window animations
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 
+# Disable animated focus ring
+defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true

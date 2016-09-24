@@ -1,15 +1,15 @@
 # Starter
 
-Take the monotony out of OS X system setup.
+Take the monotony out of macOS system setup.
 
-When configuring a new Mac, or when performing a clean installation of OS X, there are a number of setup tasks that may be automated, including:
+When configuring a new Mac, or when performing a clean installation of macOS, there are a number of setup tasks that may be automated, including:
 
 - The installation of 3rd party applications.
 - The installation of command line tools.
 - Configuration of system and application preferences.
-- Creation of a local filesystem heriarchy
+- Creation of a local file system hierarchy
 
-Starter allows users to configure these settings prior to installation, and create reproducable OS X enviorments.
+Starter allows users to configure these settings prior to installation, and create reproducible macOS environments.
 
 Installation
 ============

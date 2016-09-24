@@ -1,6 +1,6 @@
 # How to contribute
 
-In addition to global, system level preferences, there are tons of great apps for OS X which have configurable preferences stored in property list (plist) files, editable by the defaults command and other tools. So many, in fact, that it would be difficult for any one person to compile them all. That's why we're relying on your help. If there is a tool that you'd like to see represented, help us out by opening a pull request!
+In addition to global, system level preferences, there are tons of great apps for macOS which have configurable preferences stored in property list (plist) files, editable by the defaults command and other tools. So many, in fact, that it would be difficult for any one person to compile them all. That's why we're relying on your help. If there is a tool that you'd like to see represented, help us out by opening a pull request!
 
 There are a few guidelines that we need contributors to follow to keep the project clean and maintainable. To ensure your pull request is accepted, please review the following guidelines.
 
@@ -22,7 +22,7 @@ __Note:__ `NSGlobalDomain` defaults are located in a `.GlobalPreferences.plist` 
 
 ### Application Domains
 
-An application _domain_, also called _bundle identifier_, is used by OS X to associate various settings to an application. Generally, there preference files are located in the `~/Library/Preferences` directory. You can determine an application's domain using the following shell function:
+An application _domain_, also called _bundle identifier_, is used by macOS to associate various settings to an application. Generally, there preference files are located in the `~/Library/Preferences` directory. You can determine an application's domain using the following shell function:
 
     bundleid() {
       # Accept multiple forms of input

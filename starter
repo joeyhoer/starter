@@ -57,7 +57,7 @@ function quit_apps {
         qlmanage -r
         ;;
       *)
-        killall "$app" >/dev/null 2>&1
+        killall "$app" &>/dev/null
         # osascript -e "tell application \"${app}\" to quit"
         ;;
     esac
@@ -92,20 +92,20 @@ system_preferences=(
   trackpad
   printers-scanners
   sound
+  # startup-disk
 
   icloud
   # internet-accounts
   extensions
+  app-store
   # network
   bluetooth
   sharing
 
   users-groups
   # parental-controls
-  app-store
-  dictation-speech
+  siri
   date-time
-  # startup-disk
   time-machine
   accessibility
 

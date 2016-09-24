@@ -14,7 +14,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Install Cask
-brew install caskroom/cask/brew-cask
+brew tap caskroom/cask
 brew tap caskroom/versions
 #brew tap caskroom/fonts
 
@@ -22,57 +22,64 @@ brew tap caskroom/versions
 brew cask update
 
 # Install GUI applications
-brew cask install adapter
-brew cask install adobe-creative-cloud
-brew cask install airdisplay
-brew cask install bartender
-brew cask install dropbox
-brew cask install firefox
-brew cask install firefoxdeveloperedition
-brew cask install google-chrome
-brew cask install google-chrome-canary
-brew cask install imagealpha
-brew cask install imageoptim
-brew cask install opera
-brew cask install opera-beta
-brew cask install sequel-pro
-brew cask install sublime-text3
-brew cask install the-unarchiver
-brew cask install totalterminal
-brew cask install transmission
-brew cask install vlc
-brew cask install webkit-nightly
-brew cask install xquartz
+brew cask install --force adapter
+brew cask install --force adobe-creative-cloud
+brew cask install --force airdisplay
+brew cask install --force airserver
+brew cask install --force atom
+brew cask install --force bartender
+brew cask install --force boom
+brew cask install --force colors
+brew cask install --force dropbox
+brew cask install --force firefox
+brew cask install --force firefoxdeveloperedition
+brew cask install --force flux
+brew cask install --force google-chrome
+brew cask install --force google-chrome-canary
+brew cask install --force imagealpha
+brew cask install --force imageoptim
+brew cask install --force itsycal
+brew cask install --force opera
+brew cask install --force opera-beta
+brew cask install --force password-assistant
+brew cask install --force safari-technology-preview
+brew cask install --force sequel-pro
+brew cask install --force sublime-text
+brew cask install --force the-unarchiver
+brew cask install --force totalterminal
+brew cask install --force transmission
+brew cask install --force vector-magic
+brew cask install --force vlc
+brew cask install --force webkit-nightly
+brew cask install --force wkhtmltopdf
+brew cask install --force xquartz
 
 # Install Virtualization Software
-brew cask install vmware-fusion
-brew cask install vagrant
-brew cask install vagrant-manager
-
-# Install Popcorn Time
-brew tap popcorn-time/homebrew-cask https://git.popcorntime.io/caskroom/homebrew-cask.git
-brew cask install popcorn-time
+brew cask install --force vmware-fusion
+brew cask install --force vagrant
+brew cask install --force vagrant-manager
 
 # Install Preference Panes
-brew cask install hosts
+brew cask install --force hosts
 
 # Install QuickLook Plugins
-brew cask install qlcolorcode
-brew cask install qlmarkdown
-brew cask install qlstephen
+brew cask install --force qlcolorcode
+brew cask install --force qlmarkdown
+brew cask install --force qlstephen
+brew cask install --force webpquicklook
 
 # Install Screen Savers
-brew cask install ios-lockscreen
+brew cask install --force ios-lockscreen
 
 # Install Color Picker Plugins
-brew cask install colorpicker-skalacolor
+brew cask install --force colorpicker-skalacolor
 
 # Install others
-brew cask install hashcat
+brew cask install --force hashcat
 
 # Install non-standard casks
 brew tap joeyhoer/homebrew-extras
-brew cask install font-microsoft-office
+brew cask install --force font-microsoft-office
 
 # Remove outdated versions from the cellar
 brew cask cleanup

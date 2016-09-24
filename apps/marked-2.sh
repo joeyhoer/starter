@@ -4,11 +4,11 @@
 # Marked 2                                                                    #
 ###############################################################################
 
-# Show style picker
-defaults write com.brettterpstra.marked2 showStylePicker -bool false
-
 # Show overview on launch
 defaults write com.brettterpstra.marked2 showQuickOverviewOnLaunch -bool false
+
+# High contrast preview
+defaults write com.brettterpstra.marked2 inverseColors -bool true
 
 # General
 ###############################################################################
@@ -30,6 +30,9 @@ defaults write com.brettterpstra.marked2 alphaLevel -float 0.75
 
 # Disable memory-intensive features on large documents
 defaults write com.brettterpstra.marked2 minimalJavaScript -bool true
+
+# Show style picker
+defaults write com.brettterpstra.marked2 showStylePicker -bool false
 
 # Show work count
 defaults write com.brettterpstra.marked2 showWordCount -bool true
@@ -202,16 +205,16 @@ defaults write com.brettterpstra.marked2 printBackgrounds -bool true
 defaults write com.brettterpstra.marked2 fixOrphans -bool true
 
 # Add page breaks before H1
-defaults write com.brettterpstra.marked2 h1IsPageBreak -bool true
+defaults write com.brettterpstra.marked2 h1IsPageBreak -bool false
 
 # Exclude page break before first H1
 defaults write com.brettterpstra.marked2 firstH1IsPageBreak -bool true
 
 # Add page breaks before H2
-defaults write com.brettterpstra.marked2 h2IsPageBreak -bool true
+defaults write com.brettterpstra.marked2 h2IsPageBreak -bool false
 
 # Add page breaks before footnotes
-defaults write com.brettterpstra.marked2 breakBeforeFootnotes -bool true
+defaults write com.brettterpstra.marked2 breakBeforeFootnotes -bool false
 
 # Indicate page breaks in preview
 defaults write com.brettterpstra.marked2 showPageBreaksInPreview -bool true

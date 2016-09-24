@@ -2,7 +2,7 @@
 
 ###############################################################################
 # TotalTerminal                                                               #
-# Note: To enable TotalTerminal in OS X 10.11, SIP mut be disabled.           #
+# Note: To enable TotalTerminal in macOS, SIP mut be disabled.                #
 # To disable SIP, boot into the Recover Partition and run the                 #
 # following commands:                                                         #
 #     csrutil disable                                                         #

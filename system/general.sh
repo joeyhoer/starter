@@ -45,3 +45,7 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 for category in 'applications' 'documents' 'servers'; do
    /usr/bin/osascript -e "tell application \"System Events\" to tell appearance preferences to set recent $category limit to 10"
 done
+
+# Allow Handoff between this Mac and your iCloud devices
+defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd ActivityAdvertisingAllowed -bool true
+defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd ActivityReceivingAllowed -bool true

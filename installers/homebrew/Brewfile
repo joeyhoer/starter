@@ -24,7 +24,7 @@ brew install zsh
 brew install wget --with-iri
 
 # Install GNU commands
-# Install GNU core utilities (those that come with OS X are outdated)
+# Install GNU core utilities (those that come with macOS are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
 # Install more useful GNU utilities like `sponge`
@@ -34,10 +34,13 @@ brew install coreutils
 # Install GNU `sed`, overwriting the built-in `sed`
 #brew install gnu-sed --default-names
 
-# Install more recent versions of some OS X tools
+# Install more recent versions of some macOS tools
 #brew install vim --override-system-vi
+brew install curl --with-nghttp2 && brew link curl --force
 brew install homebrew/dupes/grep
+brew install homebrew/dupes/rsync
 brew install homebrew/dupes/screen
+brew install homebrew/dupes/openssh
 
 # Install Terminal Multiplexer
 brew install tmux
@@ -73,14 +76,15 @@ brew install namebench
 brew install wifi-password
 
 # Install JS tools
-brew install node # This installs `npm` too using the recommended installation method
+brew install node # Also installs `npm`
 brew install rhino
 brew install phantomjs
 brew install slimerjs
 
-# Install CSS and JS compressors
+# Install CSS, HTML, and JS compressors
 brew install closure-compiler
 brew install yuicompressor
+brew install htmlcompressor --with-yuicompressor
 
 # Install other useful binaries
 #brew install bfg
@@ -89,24 +93,27 @@ brew install imagesnap
 brew install lynx
 brew install pv
 brew install pwgen
+brew install speedtest_cli
+brew install ssh-copy-id
 brew install tree
 brew install webkit2png
 brew install ffmpeg --with-faac --with-libvpx --with-x265 --with-webp
 brew install multimarkdown
 brew install pandoc
+brew install xmlstarlet
 
 # Install recovery and security tools
 brew install foremost
 brew install nmap
 brew install sqlmap
 brew install hashpump
+brew install tor
 
 # Install image utilities
 brew install advancecomp
 brew install apngasm
 #brew install exiv2
 brew install gifsicle
-brew install gifify
 brew install graphicsmagick
 brew install icoutils
 brew install imagemagick --with-libtiff --with-librsvg --with-webp
@@ -120,6 +127,7 @@ brew install libbpg
 brew install mozjpeg
 brew install optipng
 brew install perceptualdiff
+brew install pngcheck
 brew install pngcrush
 brew install pngnq
 brew install pngquant
@@ -144,13 +152,14 @@ brew install lz4
 brew install snappy
 
 # Install non-standard tools
-brew tap joeyhoer/homebrew-extras
+brew tap joeyhoer/extras
 brew install closure-stylesheets
 brew install crunchme
 brew install cryopng
 brew install cryozopflipng
 brew install defluff
-brew install gifv
+brew install gifv --HEAD
+brew install joeyhoer/extras/gifify --HEAD
 brew install gzthermal
 brew install huffmix
 brew install jpegquality
@@ -159,7 +168,7 @@ brew install mediancut-posterizer
 brew install pngnq-s9
 brew install pngout
 brew install pngthermal
-brew install pngwolf
+brew install pngwolf-zopfli --HEAD
 
 # Remove outdated versions from the cellar
 brew cleanup && brew prune

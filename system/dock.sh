@@ -19,6 +19,9 @@ defaults write com.apple.dock largesize -int 64
 # Minimization effect: 'genie', 'scale', 'suck'
 defaults write com.apple.dock mineffect -string 'scale'
 
+# Prefer tabs when opening documents: 'always', 'fullscreen', 'manual'
+defaults write NSGlobalDomain AppleWindowTabbingMode -string 'always'
+
 # Dock orientation: 'left', 'bottom', 'right'
 # defaults write com.apple.dock 'orientation' -string 'bottom'
 
@@ -62,7 +65,7 @@ defaults write com.apple.dock mouse-over-hilite-stack -bool true
 defaults write com.apple.dock 'checked-for-launchpad' -bool true
 
 # Remove all (default) app icons from the Dock
-defaults write com.apple.dock persistent-apps -array ''
+defaults write com.apple.dock persistent-apps -array
 
 # Lock the Dock contents
 # defaults write com.apple.dock contents-immutable -bool true
