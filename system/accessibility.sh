@@ -58,7 +58,7 @@ defaults write com.apple.speech.synthesis.general.prefs SpokenUIUseSpeakingHotKe
 # 1835364215 | 201 | Alex
 # 1734437985 | 100 | Bruce
 defaults write com.apple.speech.voice.prefs SelectedVoiceCreator -int 1835364215
-defaults write com.apple.speech.voice.prefs SelectedVoiceID -int 201
+defaults write com.apple.speech.voice.prefs SelectedVoiceID -int 202
 defaults write com.apple.speech.voice.prefs SelectedVoiceName -string "Alex"
 
 # Speaking Rate
@@ -72,6 +72,6 @@ defaults write com.apple.speech.voice.prefs SelectedVoiceName -string "Alex"
     -c "Add    :VoiceRateDataArray     array"              \
     -c "Add    :VoiceRateDataArray:0   array"              \
     -c "Add    :VoiceRateDataArray:0:0 integer 1835364215" \
-    -c "Add    :VoiceRateDataArray:0:1 integer 201"        \
+    -c "Add    :VoiceRateDataArray:0:1 integer 202"        \
     -c "Add    :VoiceRateDataArray:0:2 integer 350"        \
     ~/Library/Preferences/com.apple.speech.voice.prefs.plist
