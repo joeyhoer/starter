@@ -1,0 +1,22 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"ApacheConf.tmLanguage",
+		"ApplySyntax",
+		"ChangeQuotes",
+		"CSScomb",
+		"Dayle Rees Color Schemes",
+		"Dotfiles Syntax Highlighting",
+		"Emmet",
+		"HTML-CSS-JS Prettify",
+		"MarkdownEditing",
+		"Material Theme",
+		"Package Control",
+		"SCSS",
+		"SideBarEnhancements",
+		"Theme - Soda"
+	]
+}
