@@ -7,11 +7,11 @@
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Set key repeat rate
+# Set key repeat rate (minimum 1)
 # Off: 300000
 # Slow: 120
 # Fast: 2
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain KeyRepeat -int 1
 
 # Set delay until repeat (in milliseconds)
 # Long: 120
