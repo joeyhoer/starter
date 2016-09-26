@@ -5,6 +5,7 @@
 	"installed_packages":
 	[
 		"ApacheConf.tmLanguage",
+		"AppleScript Extensions",
 		"ApplySyntax",
 		"ChangeQuotes",
 		"CSScomb",
@@ -12,6 +13,7 @@
 		"Dotfiles Syntax Highlighting",
 		"Emmet",
 		"HTML-CSS-JS Prettify",
+		"Liquid",
 		"MarkdownEditing",
 		"Material Theme",
 		"Package Control",

@@ -1,4 +1,20 @@
 {
+	"added_words":
+	[
+		"parsible",
+		"Magento",
+		"ecommerce",
+		"freemium",
+		"minification",
+		"polyfill",
+		"regex",
+		"remarketing",
+		"sitemap",
+		"timeline",
+		"webmaster",
+		"webmasters",
+		"Wikipedia"
+	],
 	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 	"default_encoding": "UTF-8",
 	"default_line_ending": "unix",
