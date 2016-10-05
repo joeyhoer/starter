@@ -4,7 +4,7 @@
 # QuickTime                                                                   #
 ###############################################################################
 
-# Play video on open
+# Play video on open (no longer working in 10.12)
 defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true
 
 # Set recording quality

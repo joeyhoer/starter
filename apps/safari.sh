@@ -10,7 +10,7 @@
 # Start with all windows from last session
 defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool true
 
-# Srtart with a new private window
+# Start with a new private window
 # defaults write com.apple.Safari OpenPrivateWindowWhenNotRestoringSessionAtLaunch -bool true
 
 # Setup new window and tab behvior
@@ -29,7 +29,7 @@ defaults write com.apple.Safari HomePage -string 'about:blank'
 defaults write com.apple.Safari HistoryAgeInDaysLimit -int 31
 
 # Save downloded files to
-defaults write com.apple.Safari DownloadsPath -stirng '~/Downloads'
+defaults write com.apple.Safari DownloadsPath -string '~/Downloads'
 
 # Remove downloads list items
 # 0: Manually
@@ -77,7 +77,7 @@ defaults write com.apple.Safari UniversalSearchEnabled -bool true
 defaults write com.apple.Safari ShowFavoritesUnderSmartSearchField -bool false
 
 # Enable Quick Website Search
-defaults write com.apple.Safari WebsiteSpecificSearchEnabled -boot true
+defaults write com.apple.Safari WebsiteSpecificSearchEnabled -bool true
 
 # Preload Top Hit in the background
 defaults write com.apple.Safari PreloadTopHit -bool true

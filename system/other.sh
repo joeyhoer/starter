@@ -88,14 +88,16 @@ defaults write com.apple.screencapture name -string "screen"
 #  echo "* * * * * openssl rand -base64 5 | base64 | cut -c1-5 | xargs defaults write com.apple.screencapture name" ) \
 #  | crontab -
 
-# Screenshot filename format:
-# This is *could* be dangerous, it modifies core system files:
+# Screenshot filename format.
+# WARNING: This approach is *dangerous*, as it modifies core system files.
+# NOTE: This approach makes a backup of system files.
+# TIP: A better approach is to use an Automator workflow.
 #   %@ %@ at %@:
 #     %1$@ name (default: Screen Shot)
 #     %2$@ date (default: yyyy-MM-dd)
 #     %3$@ time (default: System "Medium" time, which must be changed globally)
-
 #screencapturestrings='/System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings'
+#sudo cp "$screencapturestrings" "${screencapturestrings}.bak" && \
 #sudo plutil -convert xml1 "$screencapturestrings" -o - | \
 #    sed -e 's#<string>%@ %@ at %@</string>#<string>%@%@%@</string>#'  \
 #        -e 's#<string>-</string>#<string></string>#' \
