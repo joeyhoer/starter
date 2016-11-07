@@ -3,7 +3,7 @@
 ###############################################################################
 # TotalTerminal                                                               #
 # Note: To enable TotalTerminal in macOS, SIP mut be disabled.                #
-# To disable SIP, boot into the Recover Partition and run the                 #
+# To disable SIP, boot into the Recovery Partition and run the                #
 # following commands:                                                         #
 #     csrutil disable                                                         #
 #     csrutil enable --without fs                                             #

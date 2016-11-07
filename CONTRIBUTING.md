@@ -10,7 +10,7 @@ This project relies heavily on the use of comments. Without comments, `defaults`
 
 ### Multiple options
 
-All GUI selectible values should be represented in comments.
+All GUI selectable values should be represented in comments.
 
 If the preference is a range input, it is acceptable to note the minimum and maximum values.
 
@@ -18,7 +18,7 @@ If the preference is a range input, it is acceptable to note the minimum and max
 
 The most common location for defaults is `~/Library/Preferences`, thought they may also be found in `~/Library/Containers` and at other locations throughout the system.
 
-__Note:__ `NSGlobalDomain` defaults are located in a `.GlobalPreferences.plist` file in the `~/Library/Preferences` directory.
+__Note:__ `NSGlobalDomain` defaults are located in `~/Library/Preferences/.GlobalPreferences.plist`.
 
 ### Application Domains
 
@@ -46,3 +46,17 @@ Then, change a setting within the application and run (again, where `$domain` is
     comm -13 <(echo "$prev_defaults") <(defaults read $domain)
 
 This will return the current values of the settings that were changed changed.
+
+Some applications and services, like the System Preferences application, may write to a number of domains; locating these domains can be difficult. To find these domains, `opensnoop` may be used to monitor file access:
+
+    # Monitor any '.plist' access
+    sudo opensnoop | grep '.plist'
+    # Monitor any '.plist' access in any 'Preferences' directory
+    sudo opensnoop | egrep '/Preferences/.*\.plist'
+
+The use of `opensnoop` may be restricted by System Integrity Protection (SIP); to disable SIP, boot into the Recovery Partition and run the following commands:
+
+    csrutil disable
+    csrutil enable --without dtrace
+
+**Note:** This is recommended only for advanced users.
