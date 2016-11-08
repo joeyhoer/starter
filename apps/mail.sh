@@ -11,14 +11,21 @@ defaults write com.apple.mail DisableSendAnimations -bool true
 # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
-# Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
+# Add keyboard shortcut to send an email (⌘ + Enter)
 #defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
+
+# Add keyboard shortcut to create bulleted list (⌘L)
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Format\033Lists\033Insert Bulleted List" -string "@l"
 
 # Disable inline attachments (just show the icons)
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
-# Disable automatic spell checking
-defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled"
+# Checking Spelling
+# Note: NSAllowContinuousSpellChecking must be enabled
+# While Typing   : InlineSpellCheckingEnabled
+# Before Sending : SpellCheckingOnSendEnabled
+# Never          : NoSpellCheckingEnabled
+defaults write com.apple.mail SpellCheckingBehavior -string "InlineSpellCheckingEnabled"
 
 # Show To/Cc label in message list
 defaults write com.apple.mail EnableToCcInMessageList -bool true

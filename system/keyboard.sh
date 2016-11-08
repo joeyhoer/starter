@@ -50,6 +50,13 @@ defaults write NSGlobalDomain NSUserQuotesArray -array '"\""' '"\""' '"'\''"' '"
 # Correct spelling automatically
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Continuously check spelling in (most) text views
+# defaults write NSGlobalDomain NSAllowContinuousSpellChecking -bool false
+
+# Disable blinking cursor
+# defaults write -g NSTextInsertionPointBlinkPeriodOn  -float 1000000
+# defaults write -g NSTextInsertionPointBlinkPeriodOff -float 1000
+
 # Prevent accidental Power button presses from sleeping system
 defaults write com.apple.loginwindow PowerButtonSleepsSystem -bool false
 
