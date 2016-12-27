@@ -68,7 +68,8 @@ defaults write com.apple.loginwindow PowerButtonSleepsSystem -bool false
 #   @    ⌘  Command
 #   \033    Nested Option Delimiter
 #   nil     No shortcut
-# Note: The "$" character may need to be escaped, as usual, in Bash commands
+# Note: Some of the characters above (e.g. "$" and "~") are special characters
+# and may need to be escaped in Bash commands
 # http://support.apple.com/kb/HT1343
 # Note: When adding shortcuts for nested options, entries must begin with
 # the '\033' escape sequence, in addition to seperating the options.

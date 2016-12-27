@@ -12,10 +12,15 @@ defaults write com.apple.mail DisableSendAnimations -bool true
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 # Add keyboard shortcut to send an email (⌘ + Enter)
-#defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
+#defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string $'@\U21a9'
 
 # Add keyboard shortcut to create bulleted list (⌘L)
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Format\033Lists\033Insert Bulleted List" -string "@l"
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Format\033Lists\033Insert Bulleted List" -string '@l'
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Format\033Lists\033Insert Numbered List" -string '~@l'
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Format\033Lists\033Convert to Bulleted List" -string '$@l'
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Format\033Lists\033Convert to Numbered List" -string '$@l'
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Format\033Lists\033Increase List Level" -string $'^@\U2192'
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Format\033Lists\033Decrease List Level" -string $'^@\U2190'
 
 # Disable inline attachments (just show the icons)
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
