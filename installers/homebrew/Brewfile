@@ -66,7 +66,7 @@ brew install pyenv
 
 # Install Ruby tools
 # Installing ruby with Homebrew is unnecessary,
-# as python will be installed and managed via rbenv
+# as ruby will be installed and managed via rbenv
 # brew install ruby
 brew install rbenv
 brew install ruby-build
