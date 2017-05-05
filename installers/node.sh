@@ -4,27 +4,40 @@
 # Node                                                                        #
 ###############################################################################
 
-# Node and npm *should* be installed at this point
-hash npm 2>/dev/null || echo "Please install npm before continuing"
+# Node and yarn *should* be installed at this point
+hash node 2>/dev/null || echo "Please install node before continuing"
+hash yarn 2>/dev/null || echo "Please install yarn before continuing"
 
-# Update npm
-npm update -g npm
+# Set global install path
+yarn config set prefix '/usr/local/'
 
 # Install Node packages
-npm install -g a11y
-npm install -g autoprefixer
-npm install -g browser-sync
-npm install -g clean-css
-npm install -g cssmin
-npm install -g grunt-cli
-npm install -g gulp
-npm install -g html-minifier
-npm install -g jscrush
-npm install -g jscs
-npm install -g jshint
-npm install -g modernizr
-npm install -g packer
-npm install -g psi
-npm install -g snapline
-npm install -g svgo
-npm install -g uglify-js
+node_packages=(
+  a11y
+  autoprefixer
+  babili
+  browser-sync
+  clean-css
+  cssmin
+  grunt-cli
+  gulp
+  html-minifier
+  jscrush
+  jscs
+  jshint
+  lebab
+  modernizr
+  packer
+  psi
+  snapline
+  stylelint
+  svgo
+  uglify-js
+)
+
+# Loop through each package individally because
+# any errors will stop all installations
+# yarn global add "${node_packages[@]/%/@latest}"
+for package in "${node_packages[@]}"; do
+   yarn global add "${package/%/@latest}"
+done

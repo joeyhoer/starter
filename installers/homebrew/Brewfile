@@ -81,6 +81,7 @@ brew install wifi-password
 
 # Install JS tools
 brew install node # Also installs `npm`
+brew install yarn
 brew install rhino
 brew install phantomjs
 brew install slimerjs
@@ -119,6 +120,7 @@ brew install apngasm
 #brew install exiv2
 brew install gifsicle
 brew install graphicsmagick
+brew install guetzli
 brew install icoutils
 brew install imagemagick --with-libtiff --with-librsvg --with-webp
 brew install imageworsener
