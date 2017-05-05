@@ -34,6 +34,7 @@ brew cask install --force dropbox
 brew cask install --force firefox
 brew cask install --force firefoxdeveloperedition
 brew cask install --force flux
+brew cask install --force forklift
 brew cask install --force google-chrome
 brew cask install --force google-chrome-canary
 brew cask install --force imagealpha
