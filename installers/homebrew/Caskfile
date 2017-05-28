@@ -19,7 +19,7 @@ brew tap caskroom/versions
 #brew tap caskroom/fonts
 
 # Make sure we're using the latest Cask
-brew cask update
+brew update
 
 # Install GUI applications
 brew cask install --force adapter
@@ -42,8 +42,10 @@ brew cask install --force imageoptim
 brew cask install --force iterm2-beta
 brew cask install --force itsycal
 brew cask install --force itsycal
+brew cask install --force kaleidoscope
 brew cask install --force opera
 brew cask install --force opera-beta
+brew cask install --force opera-developer
 brew cask install --force password-assistant
 brew cask install --force safari-technology-preview
 brew cask install --force sequel-pro
@@ -51,7 +53,6 @@ brew cask install --force sublime-text
 brew cask install --force the-unarchiver
 brew cask install --force totalterminal
 brew cask install --force transmission
-brew cask install --force vector-magic
 brew cask install --force vlc
 brew cask install --force webkit-nightly
 brew cask install --force wkhtmltopdf
@@ -77,12 +78,12 @@ brew cask install --force ios-lockscreen
 # Install Color Picker Plugins
 brew cask install --force colorpicker-skalacolor
 
-# Install others
-brew cask install --force hashcat
-
 # Install non-standard casks
 brew tap joeyhoer/homebrew-extras
+brew cask install --force vector-magic
 brew cask install --force font-microsoft-office
+brew cask install --force font-san-francisco-compact
+brew cask install --force font-san-francisco-ui
 
 # Remove outdated versions from the cellar
 brew cask cleanup
