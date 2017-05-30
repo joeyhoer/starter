@@ -109,6 +109,9 @@ done
 # sudo find / -name ".DS_Store" --delete
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
 # View Options
 # ColumnShowIcons    : Show preview column
 # ShowPreview        : Show icons
