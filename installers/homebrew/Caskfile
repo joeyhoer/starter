@@ -41,7 +41,6 @@ brew cask install --force imagealpha
 brew cask install --force imageoptim
 brew cask install --force iterm2-beta
 brew cask install --force itsycal
-brew cask install --force itsycal
 brew cask install --force kaleidoscope
 brew cask install --force opera
 brew cask install --force opera-beta
