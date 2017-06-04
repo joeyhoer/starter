@@ -1,185 +1,229 @@
-#!/usr/bin/env bash
+# Set global configuration arguments
+cask_args appdir: "/Applications"
 
-# Install command-line tools using Homebrew
+# Taps
+tap "caskroom/cask"
+tap "caskroom/versions"
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/dupes"
+tap "homebrew/headonly"
+tap "homebrew/php"
+tap "joeyhoer/extras"
+tap "justwatchcom/gopass"
 
-# Ask for the administrator password upfront
-sudo -v
+# Cask dependencies
+brew "mas"
+cask "java"
+cask "xquartz"
 
-# Keep-alive: update existing `sudo` time stamp until the script has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-# Make sure we’re using the latest Homebrew
-brew update
-
-# Upgrade any already-installed formulae
-brew upgrade --all
-
-# Install Shells
+# Shells
 # Note: Don't forget to add shells to `/etc/shells` before running `chsh`.
-brew install bash
-brew install zsh
-# brew install bash-completion
+brew "bash"
+brew "zsh"
 
-# Install wget with IRI support
-brew install wget --with-iri
+# CLI utilities
+# Note: This replaces some (outdated) built-in macOS utilities with the GNU equivalents
+# Don't forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+brew "coreutils"
+brew "curl", args: ["with-nghttp2"]
+#brew "findutils" # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
+brew "git"
+brew "grep"
+#brew install gnu-sed --default-names # Install GNU `sed`, overwriting the built-in `sed`
+#brew "moreutils" # Install more useful GNU utilities like `sponge`
+brew "openssh"
+brew "pv"
+brew "pwgen"
+brew "ripgrep"
+brew "rsync"
+brew "screen"
+brew "ssh-copy-id"
+brew "tmux"
+brew "tree"
+brew "wget"
 
-# Install GNU commands
-# Install GNU core utilities (those that come with macOS are outdated)
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-# Install more useful GNU utilities like `sponge`
-#brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
-#brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`
-#brew install gnu-sed --default-names
+# Other useful tools
+brew "highlight"
+brew "multimarkdown"
+brew "pandoc"
+brew "reattach-to-user-namespace"
+brew "xmlstarlet"
 
-# Install more recent versions of some macOS tools
-#brew install vim --override-system-vi
-brew install curl --with-nghttp2 && brew link curl --force
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/rsync
-brew install homebrew/dupes/screen
-brew install homebrew/dupes/openssh
-brew install ripgrep
+# Image tools
+brew "advancecomp"
+brew "apngasm"
+brew "joeyhoer/extras/apngdis"
+brew "joeyhoer/extras/crunchme"
+brew "joeyhoer/extras/cryopng"
+brew "joeyhoer/extras/cryozopflipng"
+brew "joeyhoer/extras/defluff"
+brew "ffmpeg", args: ["with-libvpx", "with-webp", "with-x265"]
+brew "flif"
+brew "joeyhoer/extras/gifify", args: ["HEAD"]
+brew "gifsicle"
+brew "joeyhoer/extras/gifv", args: ["HEAD"]
+brew "graphicsmagick"
+brew "guetzli"
+brew "icoutils"
+brew "imagemagick", args: ["with-librsvg", "with-webp"]
+brew "imageworsener"
+brew "jhead"
+brew "jpeg"
+brew "jpeg-archive"
+brew "jpegoptim"
+brew "joeyhoer/extras/jpegquality", args: ["HEAD"]
+brew "jpegrescan"
+brew "libbpg"
+brew "joeyhoer/extras/mediancut-posterizer"
+brew "mozjpeg"
+brew "optipng"
+brew "perceptualdiff"
+brew "pngcheck"
+brew "pngcrush"
+brew "pngnq"
+brew "joeyhoer/extras/pngnq-s9"
+brew "joeyhoer/extras/pngout"
+brew "pngquant"
+brew "joeyhoer/extras/pngthermal"
+brew "joeyhoer/extras/pngwolf-zopfli", args: ["HEAD"]
+brew "webp"
 
-# Install Terminal Multiplexer
-brew install tmux
+# Compression tools
+brew "bzip2"
+brew "cabextract"
+brew "gzip"
+brew "joeyhoer/extras/gzthermal"
+brew "joeyhoer/extras/huffmix"
+brew "joeyhoer/extras/kzipmix"
+brew "lbzip2"
+brew "lz4"
+brew "p7zip"
+brew "pbzip2"
+brew "pigz"
+brew "pixz"
+brew "pxz"
+brew "snappy"
+brew "unar"
+brew "xz"
+brew "zopfli", args: ["HEAD"]
 
-# Install wrapper utility to fix issues with tmux
-# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
-brew install reattach-to-user-namespace
+# Mac OS tools
+brew "imagesnap"
+brew "trash"
+brew "wifi-password"
 
-# Install server stack
-brew install homebrew/php/php56
-brew install homebrew/php/php56-opcache
-brew install homebrew/php/php56-apcu
-brew install homebrew/php/php56-mcrypt
-# brew install mysql
-brew install percona-server
-brew install dnsmasq
+# Server stack
+brew "dnsmasq"
+brew "percona-server"
+brew "homebrew/php/php56", args: ["with-httpd24"]
+brew "homebrew/php/php56-apcu"
+brew "homebrew/php/php56-mcrypt"
+brew "homebrew/php/php56-opcache"
 
-# Install Go
-brew install go
+# Programming languages
+# Installing Python/Ruby with Homebrew is unnecessary,
+# as they will be installed and managed via pyenv/rbenv respectively
+brew "go"
+brew "pyenv" # Python
+brew "ruby-build"
+brew "rbenv" # Ruby
+brew "node" # Also installs `npm`
+brew "yarn" # Faster than npm
 
-# Install Python tools
-# Installing python with Homebrew is unnecessary,
-# as python will be installed and managed via pyenv
-# brew install python
-brew install pyenv
+# Web tools
+brew "closure-compiler"
+brew "closure-stylesheets"
+brew "htmlcompressor", args: ["with-yuicompressor"]
+brew "lynx"
+brew "phantomjs"
+brew "slimerjs"
+brew "webkit2png"
+brew "yuicompressor"
 
-# Install Ruby tools
-# Installing ruby with Homebrew is unnecessary,
-# as ruby will be installed and managed via rbenv
-# brew install ruby
-brew install rbenv
-brew install ruby-build
+# Network tools
+brew "tor"
+brew "namebench"
+brew "nmap"
+brew "speedtest_cli"
 
-# Install network tools
-brew install namebench
-brew install wifi-password
+# Security tools
+brew "foremost"
+brew "justwatchcom/gopass/gopass"
+brew "hashpump"
+brew "sqlmap"
 
-# Install JS tools
-brew install node # Also installs `npm`
-brew install yarn
-brew install rhino
-brew install phantomjs
-brew install slimerjs
+# Install GUI applications
+cask "adapter"
+cask "adobe-creative-cloud"
+cask "airdisplay"
+cask "airserver"
+cask "atom"
+cask "bartender"
+cask "boom"
+cask "colors"
+cask "dropbox"
+cask "flux"
+cask "forklift"
+cask "imagealpha"
+cask "imageoptim"
+cask "iterm2-beta"
+cask "itsycal"
+cask "kaleidoscope"
+cask "password-assistant"
+cask "sequel-pro"
+cask "sublime-text"
+cask "the-unarchiver"
+cask "transmission"
+cask "vector-magic"
+cask "vlc"
+cask "wkhtmltopdf"
 
-# Install CSS, HTML, and JS compressors
-brew install closure-compiler
-brew install yuicompressor
-brew install htmlcompressor --with-yuicompressor
+# Browsers
+cask "safari-technology-preview"
+cask "webkit-nightly"
+cask "google-chrome"
+cask "google-chrome-canary"
+cask "opera"
+cask "opera-beta"
+cask "firefox"
+cask "firefoxnightly"
 
-# Install other useful binaries
-#brew install bfg
-brew install git
-brew install imagesnap
-brew install lynx
-brew install pv
-brew install pwgen
-brew install speedtest_cli
-brew install ssh-copy-id
-brew install tree
-brew install webkit2png
-brew install ffmpeg --with-faac --with-libvpx --with-x265 --with-webp
-brew install multimarkdown
-brew install pandoc
-brew install xmlstarlet
+# Virtulization applications
+cask "vmware-fusion"
+cask "vagrant"
+cask "vagrant-manager"
 
-# Install recovery and security tools
-brew install foremost
-brew install nmap
-brew install sqlmap
-brew install hashpump
-brew install tor
+# Preference Panes
+cask "hosts"
 
-# Install image utilities
-brew install advancecomp
-brew install apngasm
-#brew install exiv2
-brew install gifsicle
-brew install graphicsmagick
-brew install guetzli
-brew install icoutils
-brew install imagemagick --with-libtiff --with-librsvg --with-webp
-brew install imageworsener
-brew install jhead
-brew install jpeg
-brew install jpeg-archive
-brew install jpegoptim
-brew install homebrew/headonly/jpegrescan --HEAD
-brew install libbpg
-brew install mozjpeg
-brew install optipng
-brew install perceptualdiff
-brew install pngcheck
-brew install pngcrush
-brew install pngnq
-brew install pngquant
-brew install webp
-brew install zopfli --HEAD
+# Screensavers
+cask "ios-saver"
 
-# X11 utilities
-#brew install homebrew/x11/xpdf
+# QuickLook plugins
+cask "qlcolorcode"
+cask "qlmarkdown"
+cask "qlstephen"
+cask "webpquicklook"
 
-# Install compression tools
-brew install p7zip
-brew install bzip2
-brew install pbzip2
-brew install lbzip2
-brew install gzip
-brew install pigz
-brew install xz
-brew install pxz # Depends on gcc to compile
-brew install pixz
-brew install unar
-brew install lz4
-brew install snappy
+# Color Picker plugins
+cask "colorpicker-skalacolor"
 
-# Install non-standard tools
-brew tap joeyhoer/extras
-brew install apndis
-brew install closure-stylesheets
-brew install crunchme
-brew install cryopng
-brew install cryozopflipng
-brew install defluff
-brew install flif
-brew install gifv --HEAD
-brew install joeyhoer/extras/gifify --HEAD
-brew install gzthermal
-brew install huffmix
-brew install jpegquality
-brew install kzipmix
-brew install mediancut-posterizer
-brew install pngnq-s9
-brew install pngout
-brew install pngthermal
-brew install pngwolf-zopfli --HEAD
+# Fonts
+cask "font-microsoft-office"
+cask "font-san-francisco-compact"
+cask "font-san-francisco-ui"
 
-brew tap justwatchcom/gopass
-brew install gopass
+# MAS applications
+mas "1Blocker", id: 1107421413
+mas "Byword", id: 420212497
+mas "Divvy", id: 413857545
+mas "Kaleidoscope", id: 587512244
+mas "Marked 2", id: 890031187
+mas "xScope", id: 889428659
 
-# Remove outdated versions from the cellar
-brew cleanup && brew prune
+# Apple MAS applications
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Xcode", id: 497799835
