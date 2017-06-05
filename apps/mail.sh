@@ -25,6 +25,10 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Format\033List
 # Disable inline attachments (just show the icons)
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
+# View conversations:
+# Show most recent messages at the top
+defaults write com.apple.mail ConversationViewSortDescending -bool true
+
 # Checking Spelling
 # Note: NSAllowContinuousSpellChecking must be enabled
 # While Typing   : InlineSpellCheckingEnabled

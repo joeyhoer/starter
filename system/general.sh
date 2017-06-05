@@ -19,7 +19,7 @@ defaults write NSGlobalDomain AppleHighlightColor -string '0.780400 0.815700 0.8
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
 # Automatically hide and show the menu bar
-defaults write NSGlobalDomain "_HIHideMenuBar" -bool true
+# defaults write NSGlobalDomain "_HIHideMenuBar" -bool true
 
 # Sidebar icon size
 # Small  : 1
@@ -49,3 +49,6 @@ done
 # Allow Handoff between this Mac and your iCloud devices
 defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd ActivityAdvertisingAllowed -bool true
 defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd ActivityReceivingAllowed -bool true
+
+# Disable Auto Save, Versions and Resume
+# defaults write -g ApplePersistence -bool false

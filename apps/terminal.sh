@@ -4,6 +4,9 @@
 # Terminal                                                                    #
 ###############################################################################
 
+# Enable in Accessiblity Database
+#sudo tccutil -e com.apple.Terminal
+
 # Only use UTF-8 in Terminal
 defaults write com.apple.terminal StringEncodings -array 4
 

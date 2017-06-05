@@ -24,11 +24,11 @@ defaults write com.surteesstudios.Bartender SUAutomaticallyUpdate -bool true
 defaults write com.surteesstudios.Bartender SUFeedURL -string "http://www.macbartender.com/B2/updates/TestUpdates.php"
 
 # Bartender menu bar icon visible
-defaults write com.surteesstudios.Bartender showMenuBarIcon -bool false
+defaults write com.surteesstudios.Bartender showMenuBarIcon -bool true
 
 # Bartender menu bar icon:
 # Waistcoat, Bartender, Bowtie, Glasses, Star, Box
-defaults write com.surteesstudios.Bartender statusBarImageNamed -string "Box"
+defaults write com.surteesstudios.Bartender statusBarImageNamed -string "More"
 
 # Add login item
 loginitem add "Bartender 2"

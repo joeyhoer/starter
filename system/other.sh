@@ -142,9 +142,23 @@ sudo ln -s '/System/Library/CoreServices/Applications/Archive Utility.app/Conten
 
 # Link hidden command line tools
 sudo ln -s '/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport' \
-           '/usr/sbin/airport'
+           '/usr/local/bin/airport'
 sudo ln -s '/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc' \
            '/usr/local/bin/jsc'
 
 # Enable Folder Actions
 defaults write com.apple.FolderActionsDispatcher folderActionsEnabled -bool false
+
+###############################################################################
+# Default Applications                                                        #
+#                                                                             #
+# This is equivalent to the "Open with…" command in Finder.                   #
+# Default applications should be handled within each application's            #
+# configuration using the `duti` package installed via Homebrew.              #
+#                                                                             #
+# The below outlines an alternative solution for configuring                  #
+# default applications.                                                       #
+###############################################################################
+
+# defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers \
+#   -array-add "{LSHandlerContentType=${content_ype};LSHandlerRoleAll=${bundle_id};}"

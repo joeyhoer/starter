@@ -4,7 +4,9 @@
 # Adobe                                                                       #
 ###############################################################################
 
-open -a "Creative Cloud.app"
+# Open Creative Cloud Installer app
+app_path="$(brew cask info adobe-creative-cloud | awk '$1~/^\// {print $1}')/Creative Cloud Installer.app"
+open -a "$app_path"
 
 # Hide crufty Application folders
 sudo chflags -v hidden /Applications/Adobe

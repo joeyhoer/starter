@@ -45,3 +45,6 @@ defaults write com.mizage.direct.Divvy shortcuts -data "62706c6973743030d4010203
 
 # Add login item
 loginitem add "Divvy"
+
+# Enable in Accessiblity Database
+#sudo tccutil -e com.mizage.Divvy

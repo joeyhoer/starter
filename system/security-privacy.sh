@@ -51,8 +51,12 @@ fi
 
 ###############################################################################
 # Privacy                                                                     #
-# Privacy should be handled within each applications configuration,           #
-# this will serve as the master example                                       #
+#                                                                             #
+# Privacy should be handled within each application's configuration using     #
+# the `tccutil` package installed via Homebrew.                               #
+# Note: SIP must be disabled to modify the database.                          #
+#                                                                             #
+# The below outlines an altenrative solution for configuring privacy.         #
 ###############################################################################
 
 # Databases located at:

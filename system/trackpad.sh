@@ -43,4 +43,5 @@ defaults write com.apple.AppleMultitouchTrackpad SecondClickThreshold -int 0
 # 3: Fast
 defaults write NSGlobalDomain com.apple.trackpad.scaling -float 2.5
 
-defaults write NSGlobalDomain com.apple.trackpad.forceClick
+# Disable swipe between pages
+defaults write AppleEnableSwipeNavigateWithScrolls -bool false

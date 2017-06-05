@@ -13,4 +13,5 @@ cd ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages && { curl
 cp -r ${LOCAL_PATH}/* ~/Library/Application\ Support/Sublime\ Text*/Packages/User/ 2>/dev/null
 
 # Set Sublime Text as default plain text editor
-defaults write com.apple.LaunchServices LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.sublimetext.3;}'
+duti -s com.sublimetext.3 public.plain-text all
+duti -s com.sublimetext.3 net.daringfireball.markdown all
