@@ -3,6 +3,7 @@ cask_args appdir: "/Applications"
 
 # Taps
 tap "caskroom/cask"
+tap "caskroom/fonts"
 tap "caskroom/versions"
 tap "homebrew/bundle"
 tap "homebrew/core"
@@ -32,7 +33,7 @@ brew "git"
 brew "grep"
 #brew install gnu-sed --default-names # Install GNU `sed`, overwriting the built-in `sed`
 #brew "moreutils" # Install more useful GNU utilities like `sponge`
-brew "openssh"
+#brew "openssh"
 brew "pv"
 brew "pwgen"
 brew "ripgrep"
@@ -77,6 +78,7 @@ brew "jpegrescan"
 brew "libbpg"
 brew "joeyhoer/extras/mediancut-posterizer"
 brew "mozjpeg"
+brew "joeyhoer/extras/nice-screenshot", args: ["HEAD"]
 brew "optipng"
 brew "perceptualdiff"
 brew "pngcheck"
@@ -90,6 +92,7 @@ brew "joeyhoer/extras/pngwolf-zopfli", args: ["HEAD"]
 brew "webp"
 
 # Compression tools
+brew "brotli"
 brew "bzip2"
 brew "cabextract"
 brew "gzip"
@@ -109,7 +112,9 @@ brew "xz"
 brew "zopfli", args: ["HEAD"]
 
 # Mac OS tools
+brew "duti" # Required for setting preferences
 brew "imagesnap"
+brew "tccutil" # Required for setting preferences
 brew "trash"
 brew "wifi-password"
 
@@ -172,6 +177,7 @@ cask "itsycal"
 cask "kaleidoscope"
 cask "password-assistant"
 cask "sequel-pro"
+cask "slack"
 cask "sublime-text"
 cask "the-unarchiver"
 cask "transmission"
@@ -210,9 +216,16 @@ cask "webpquicklook"
 cask "colorpicker-skalacolor"
 
 # Fonts
-cask "font-microsoft-office"
-cask "font-san-francisco-compact"
-cask "font-san-francisco-ui"
+cask "font-anonymous-pro"
+cask "font-bebas-neue"
+cask "font-comic-neue"
+cask "font-dejavu-sans"
+cask "font-league-gothic"
+cask "font-liberation-sans"
+cask "joeyhoer/extras/font-microsoft-office"
+cask "joeyhoer/extras/font-san-francisco-compact"
+cask "joeyhoer/extras/font-san-francisco-ui"
+cask "font-symbola"
 
 # MAS applications
 mas "1Blocker", id: 1107421413
