@@ -10,7 +10,11 @@ if ! hash brew 2>/dev/null; then
 fi
 
 # Schedule Homebrew Updates
-(crontab -l 2>/dev/null; echo "0 */6 * * * /usr/local/bin/brew update &>/dev/null") | crontab -
+cron_entry='0 */6 * * * /usr/local/bin/brew update &>/dev/null'
+if ! crontab -l | fgrep "$cron_entry" >/dev/null; then
+  (crontab -l 2>/dev/null; echo "$cron_entry") | \
+    crontab -
+fi
 
 # Install Homebrew Bundle
 brew tap Homebrew/bundle
