@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APACHE_CONF_DIR="/etc/apache2/"
+APACHE_CONF_DIR="/etc/apache2"
 
 ################################################################################
 ## DNS Configuration
