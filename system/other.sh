@@ -109,25 +109,14 @@ defaults write com.apple.screencapture name -string "screen"
 # Connecting camera opens (path to application, or '' if no application)
 defaults -currentHost write com.apple.ImageCapture2 HotPlugActionPath -string ''
 
-# Link hidden Applications
-hidden_apps=(
-  'Archive Utility'
-  'Directory Utility'
-  'Screen Sharing'
-  'Network Utility'
-  'Wireless Diagnostics'
-  'Feedback Assistant'
-  'RAID Utility'
-  'System Image Utility'
-)
-
-for app in "${hidden_apps[@]}"; do
-  sudo ln -s "/System/Library/CoreServices/Applications/${app}.app" \
-             "/Applications/Utilities/${app}.app"
+# Link hidden applications
+for app in /System/Library/CoreServices/Applications/* \
+           /Applications/Xcode.app/Contents/Applications/* \
+           /Applications/Xcode.app/Contents/Developer/Applications/*; do
+  sudo ln -s "$app" /Applications/Utilities/
 done
 
 hidden_apps=(
-  'Ticket Viewer'
   'Network Diagnostics'
 )
 
