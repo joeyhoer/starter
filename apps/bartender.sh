@@ -30,5 +30,34 @@ defaults write com.surteesstudios.Bartender showMenuBarIcon -bool true
 # Waistcoat, Bartender, Bowtie, Glasses, Star, Box
 defaults write com.surteesstudios.Bartender statusBarImageNamed -string "More"
 
+# Menu bar icon positions
+defaults write com.surteesstudios.Bartender menuBarPositions -array \
+  "com.apple.ScriptMonitor"              \
+  "com.apple.QuickTimePlayerX"           \
+  "com.apple.locationmenu"               \
+  "com.adobe.acc.AdobeCreativeCloud"     \
+  "com.binarynights.ForkLiftMini"        \
+  "com.getdropbox.dropbox"               \
+  "com.docker.docker"                    \
+  AppleBluetoothExtra                    \
+  AppleVolumeExtra                       \
+  DisplaysExtra                          \
+  "com.avatron.AirDisplayHost2"          \
+  AirPortExtra                           \
+  BatteryExtra                           \
+  AppleClockExtra                        \
+  "com.mowglii.ItsycalApp"               \
+  "com.surteesstudios.Bartender"         \
+  "com.apple.Spotlight"                  \
+  NotificationCenter                     \
+  "menuExtra.notificationcenter"
+
+# Bartender bar icon positions
+defaults write com.surteesstudios.Bartender appBartenderOrder -array \
+  "com.adobe.acc.AdobeCreativeCloud"     \
+  "com.binarynights.ForkLiftMini"        \
+  "com.getdropbox.dropbox"               \
+  DisplaysExtra
+
 # Add login item
 loginitem add "Bartender 2"
