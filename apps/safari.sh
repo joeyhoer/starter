@@ -143,56 +143,6 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Enable extensions
 defaults write com.apple.Safari ExtensionsEnabled -bool true
 
-# Add Safari extensions
-# "/Applications/Safari Technology Preview.app"
-# "/Applications/WebKit.app"
-safari_browsers="/Applications/Safari.app"
-safari_extensions=(
-  "http://download.livereload.com/2.1.0/LiveReload-2.1.0.safariextz"
-  "http://sobolev.us/download/stylish/stylish.safariextz"
-)
-
-# Download Extensions
-for safari in "${safari_browsers[@]}"; do
-  for extension in "${safari_extensions[@]}"; do
-    wget -qcP ~/Downloads "$extension"
-  done
-done
-
-# Install Extensions
-osascript <<EOD
-tell application "Finder"
-  set safariextzs to $(IFS=,; sed 's/,/","/g' <<< "{\"${safari_extensions[*]##*/}\"}")
-  repeat with safariextz in safariextzs
-    set safariextz to file ((home as Unicode text) & "Downloads:" & safariextz)
-    if exists safariextz then
-      ignoring application responses
-        tell application "Safari" to open safariextz
-      end ignoring
-      tell application "System Events"
-        tell process "Safari"
-          set frontmost to true
-          -- window "Extensions"
-          repeat until (exists window 1) and subrole of window 1 is in {"AXStandardWindow", "AXDialog"}
-            delay 1
-          end repeat
-          if exists (sheet 1 of window 1) then
-            click button 1 of sheet 1 of window 1 -- "Install from Gallery" or "Trust"
-          else
-            click button 1 of window 1 -- Error "OK"
-          end if
-        end tell
-      end tell
-    end if
-  end repeat
-end tell
-EOD
-
-# Cleanup
-for extension in "${safari_extensions[@]}"; do
-  rm ~/Downloads/${extension[@]##*/} 2>/dev/null
-done
-
 # Advanced
 ###############################################################################
 
