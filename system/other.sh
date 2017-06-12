@@ -33,8 +33,6 @@ defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
-/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
 # Display ASCII control characters using caret notation in standard text views
 # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
@@ -138,6 +136,9 @@ sudo ln -s '/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current
 # Enable Folder Actions
 defaults write com.apple.FolderActionsDispatcher folderActionsEnabled -bool false
 
+# Enable locate command and build locate database
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+
 ###############################################################################
 # Default Applications                                                        #
 #                                                                             #
@@ -151,3 +152,10 @@ defaults write com.apple.FolderActionsDispatcher folderActionsEnabled -bool fals
 
 # defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers \
 #   -array-add "{LSHandlerContentType=${content_ype};LSHandlerRoleAll=${bundle_id};}"
+
+if [ -x "/usr/local/bin/duti" && "${HOME}/.duti"]; then
+  /usr/local/bin/duti "${HOME}/.duti"
+fi
+
+# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
