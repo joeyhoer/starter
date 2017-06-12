@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Notifications                                                               #
+# Notifications
 ###############################################################################
 
 # Disable Notification Center and remove the menu bar icon

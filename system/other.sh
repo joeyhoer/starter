@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Other                                                                       #
+# Other
 ###############################################################################
 
 # Menu bar: hide the Time Machine, Volume, User, and Bluetooth icons
@@ -140,14 +140,14 @@ defaults write com.apple.FolderActionsDispatcher folderActionsEnabled -bool fals
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 
 ###############################################################################
-# Default Applications                                                        #
-#                                                                             #
-# This is equivalent to the "Open with…" command in Finder.                   #
-# Default applications should be handled within each application's            #
-# configuration using the `duti` package installed via Homebrew.              #
-#                                                                             #
-# The below outlines an alternative solution for configuring                  #
-# default applications.                                                       #
+# Default Applications
+#
+# This is equivalent to the "Open with…" command in Finder.
+# Default applications should be handled within each application's
+# configuration using the `duti` package installed via Homebrew.
+#
+# The below outlines an alternative solution for configuring
+# default applications.
 ###############################################################################
 
 # defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers \

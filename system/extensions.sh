@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Extensions                                                                  #
+# Extensions
 ###############################################################################
 
 defaults write com.apple.preferences.extensions.ShareMenu displayOrder -array \

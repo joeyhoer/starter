@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Date & Time                                                                 #
+# Date & Time
 ###############################################################################
 
 # Set the timezone; see `systemsetup -listtimezones` for other values

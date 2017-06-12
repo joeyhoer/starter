@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Google Chrome & Google Chrome Canary                                        #
+# Google Chrome & Google Chrome Canary
 ###############################################################################
 
 # Allow installing user scripts via GitHub Gist or Userscripts.org

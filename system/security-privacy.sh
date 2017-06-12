@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Security & Privacy                                                          #
+# Security & Privacy
 ###############################################################################
 
 # Require password immediately after sleep or screen saver begins
@@ -36,7 +36,7 @@ sudo defaults write /Library/Preferences/com.apple.driver.AppleIRController Devi
 #sudo defaults write /Library/Preferences/com.apple.virtualMemory DisableEncryptedSwap -boolean yes
 
 ###############################################################################
-# FileVault                                                                   #
+# FileVault
 ###############################################################################
 
 # Enable FileVault (if not already enabled)
@@ -50,13 +50,13 @@ fi
 #sudo defaults write /Library/Preferences/com.apple.loginwindow DisableFDEAutoLogin -bool true
 
 ###############################################################################
-# Privacy                                                                     #
-#                                                                             #
-# Privacy should be handled within each application's configuration using     #
-# the `tccutil` package installed via Homebrew.                               #
-# Note: SIP must be disabled to modify the database.                          #
-#                                                                             #
-# The below outlines an altenrative solution for configuring privacy.         #
+# Privacy
+#
+# Privacy should be handled within each application's configuration using
+# the `tccutil` package installed via Homebrew.
+# Note: SIP must be disabled to modify the database.
+#
+# The below outlines an altenrative solution for configuring privacy.
 ###############################################################################
 
 # Databases located at:

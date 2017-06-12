@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# TotalTerminal                                                               #
-# Note: To enable TotalTerminal in macOS, SIP mut be disabled.                #
-# To disable SIP, boot into the Recovery Partition and run the                #
-# following commands:                                                         #
-#     csrutil disable                                                         #
-#     csrutil enable --without fs                                             #
-# This will disable only filesystem integrity protection.                     #
+# TotalTerminal
+# Note: To enable TotalTerminal in macOS, SIP mut be disabled.
+# To disable SIP, boot into the Recovery Partition and run the
+# following commands:
+#     csrutil disable
+#     csrutil enable --without fs
+# This will disable only filesystem integrity protection.
 ###############################################################################
 
 # Slide Visor when Terminal is activated

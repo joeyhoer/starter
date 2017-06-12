@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Spotlight                                                                   #
+# Spotlight
 ###############################################################################
 
 # Disable Spotlight indexing for any volume that gets mounted and has not yet

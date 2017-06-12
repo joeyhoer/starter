@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Bluetooth                                                                   #
+# Bluetooth
 ###############################################################################
 
 # Improve sound quality for Bluetooth headphones/headsets

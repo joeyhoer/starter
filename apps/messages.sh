@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Messages                                                                    #
+# Messages
 ###############################################################################
 
 # Disable automatic emoji substitution (i.e. use plain text smileys)

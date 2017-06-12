@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Desktop & Screen Saver                                                      #
+# Desktop & Screen Saver
 ###############################################################################
 
 # Set a custom wallpaper image. `DefaultDesktop.jpg` is already a symlink, and

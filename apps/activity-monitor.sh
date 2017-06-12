@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Activity Monitor                                                            #
+# Activity Monitor
 ###############################################################################
 
 # Show the main window when launching Activity Monitor
