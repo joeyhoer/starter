@@ -15,7 +15,7 @@ sudo defaults delete /Library/Preferences/com.apple.loginwindow autoLoginUser &>
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Allow applications downloaded from anywhere
-spctl --master-disable
+sudo spctl --master-disable
 
 # Turn on Firewall
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1

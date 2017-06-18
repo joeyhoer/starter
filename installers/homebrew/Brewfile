@@ -31,7 +31,7 @@ brew "curl", args: ["with-nghttp2"]
 #brew "findutils" # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 brew "git"
 brew "grep"
-#brew install gnu-sed --default-names # Install GNU `sed`, overwriting the built-in `sed`
+#brew "gnu-sed", args: ["default-names"] # Install GNU `sed`, overwriting the built-in `sed`
 #brew "moreutils" # Install more useful GNU utilities like `sponge`
 #brew "openssh"
 brew "pv"
@@ -60,7 +60,7 @@ brew "joeyhoer/extras/cryopng"
 brew "joeyhoer/extras/cryozopflipng"
 brew "joeyhoer/extras/defluff"
 brew "ffmpeg", args: ["with-libvpx", "with-webp", "with-x265"]
-brew "flif"
+brew "joeyhoer/extras/flif", args: ["with-apng", "with-gif"]
 brew "joeyhoer/extras/gifify", args: ["HEAD"]
 brew "gifsicle"
 brew "joeyhoer/extras/gifv", args: ["HEAD"]
@@ -168,13 +168,13 @@ cask "bartender"
 cask "boom"
 cask "colors"
 cask "dropbox"
-cask "flux"
 cask "forklift"
 cask "imagealpha"
 cask "imageoptim"
 cask "iterm2-beta"
 cask "itsycal"
 cask "kaleidoscope"
+cask "osxfuse"
 cask "password-assistant"
 cask "sequel-pro"
 cask "slack"
@@ -228,6 +228,8 @@ cask "joeyhoer/extras/font-san-francisco-ui"
 cask "font-symbola"
 
 # MAS applications
+# Get a list of installed MAS apps with:
+# `brew bundle dump --file=- | egrep ^mas`
 mas "1Blocker", id: 1107421413
 mas "Byword", id: 420212497
 mas "Divvy", id: 413857545

@@ -17,7 +17,7 @@ defaults write NSGlobalDomain AppleSpacesSwitchOnActivate -bool true
 # (i.e. use the old Exposé behavior instead)
 defaults write com.apple.dock expose-group-by-app -bool false
 
-# Disaplays have sererate Spaces
+# Displays have seperate Spaces
 defaults write com.apple.spaces spans-displays -bool false
 
 # Disable the Launchpad gesture (pinch with thumb and three fingers)

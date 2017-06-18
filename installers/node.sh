@@ -26,6 +26,7 @@ node_packages=(
   jscs
   jshint
   lebab
+  lighthouse
   modernizr
   packer
   psi
@@ -39,5 +40,5 @@ node_packages=(
 # any errors will stop all installations
 # yarn global add "${node_packages[@]/%/@latest}"
 for package in "${node_packages[@]}"; do
-   yarn global add "${package/%/@latest}"
+  yarn global add "${package/%/@latest}"
 done
