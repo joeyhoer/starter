@@ -66,8 +66,9 @@ defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 # Delay for spring loaded directories
 defaults write NSGlobalDomain com.apple.springing.delay -float 0
 
-# Writing of .DS_Store files on network volumes
+# Writing of .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Disk image verification
 defaults write com.apple.frameworks.diskimages skip-verify        -bool true

@@ -41,11 +41,17 @@ defaults write NSGlobalDomain com.apple.keyboard.fnState -bool false
 # Use smart quotes
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
+# Set Double and Single quotes
+defaults write NSGlobalDomain NSUserQuotesArray -array '"\""' '"\""' '"'\''"' '"'\''"'
+
 # Use smart dashes
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-# Set Double and Single quotes
-defaults write NSGlobalDomain NSUserQuotesArray -array '"\""' '"\""' '"'\''"' '"'\''"'
+# Disable automatic period substitution
+#defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable automatic capitalization as it’s annoying when typing code
+#defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
 # Correct spelling automatically
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false

@@ -22,3 +22,6 @@ defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
 
 # Set Metric Units
 defaults write NSGlobalDomain AppleMetricUnits -bool true
+
+# Show language menu in the top right corner of the boot screen
+#sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true

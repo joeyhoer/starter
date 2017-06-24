@@ -192,6 +192,12 @@ defaults write com.apple.Safari AlwaysShowTabBar -bool false
 # Show status bar
 defaults write com.apple.Safari ShowStatusBar -bool true
 
+# Disable auto-playing video
+#defaults write com.apple.Safari WebKitMediaPlaybackAllowsInline -bool false
+#defaults write com.apple.SafariTechnologyPreview WebKitMediaPlaybackAllowsInline -bool false
+#defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsInlineMediaPlayback -bool false
+#defaults write com.apple.SafariTechnologyPreview com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsInlineMediaPlayback -bool false
+
 # Disable Webkit Nightly start page
 defaults write org.webkit.nightly.WebKit StartPageDisabled -bool true
 
