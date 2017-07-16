@@ -89,6 +89,7 @@ brew "joeyhoer/extras/pngout"
 brew "pngquant"
 brew "joeyhoer/extras/pngthermal"
 brew "joeyhoer/extras/pngwolf-zopfli", args: ["HEAD"]
+brew "joeyhoer/extras/video-poster", args: ["HEAD"]
 brew "webp"
 
 # Compression tools
