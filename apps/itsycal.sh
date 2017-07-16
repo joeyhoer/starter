@@ -36,5 +36,10 @@ defaults write com.mowglii.ItsycalApp HideIcon -bool false
 # 65: Sunday (1) + Saturday (64)
 defaults write com.mowglii.ItsycalApp HighlightedDOWs -int 65
 
+# Theme
+# 0: Light
+# 1: Dark
+defaults write com.mowglii.ItsycalApp ThemeIndex -int 1
+
 # Show calendar weeks
 defaults write com.mowglii.ItsycalApp ShowWeeks -bool true
