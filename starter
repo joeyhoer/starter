@@ -148,11 +148,9 @@ set_prefs qlcolorcode "Quick Look"
 set_prefs sublime-text "Sublime Text"
 set_prefs transmission "Transmission"
 
-
 # Run
 get_open_affected_apps
 source_prefs
 quit_apps
 
 prompt_restart
-
