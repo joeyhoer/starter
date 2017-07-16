@@ -81,12 +81,15 @@ defaults write com.apple.screencapture name -string "screen"
 
 # Randomize screenshot names
 # @link http://blog.stefanxo.com/2014/02/random-screenshot-names-on-mac-os-x/
-#( crontab -l 2>/dev/null; \
-#  echo "* * * * * openssl rand -base64 5 | base64 | cut -c1-5 | xargs defaults write com.apple.screencapture name" ) \
-#  | crontab -
+#cron_entry='* * * * * openssl rand -base64 5 | base64 | cut -c1-5 | xargs defaults write com.apple.screencapture name'
+#if ! crontab -l | fgrep "$cron_entry" >/dev/null; then
+#  (crontab -l 2>/dev/null; echo "$cron_entry") | \
+#    crontab -
+#fi
 
 # Screenshot filename format.
 # WARNING: This approach is *dangerous*, as it modifies core system files.
+#  SIP must be disabled for this method to work.
 # NOTE: This approach makes a backup of system files.
 # TIP: A better approach is to use an Automator workflow.
 #   %@ %@ at %@:
@@ -122,7 +125,7 @@ for app in "${hidden_apps[@]}"; do
              "/Applications/Utilities/${app}.app"
 done
 
- # Link hidden prefPanes
+# Link hidden prefPanes
 sudo ln -s '/System/Library/CoreServices/Applications/Archive Utility.app/Contents/Resources/Archives.prefPane' \
            '/Library/PreferencePanes/Archives.prefPane'
 
@@ -131,6 +134,10 @@ sudo ln -s '/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Curr
            '/usr/local/bin/airport'
 sudo ln -s '/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc' \
            '/usr/local/bin/jsc'
+
+# Link hidden fonts
+sudo ln -s /System/Library/PrivateFrameworks/CoreRecognition.framework/Resources/Fonts/ \
+  /Library/Fonts/CoreRecognition
 
 # Enable Folder Actions
 defaults write com.apple.FolderActionsDispatcher folderActionsEnabled -bool false
