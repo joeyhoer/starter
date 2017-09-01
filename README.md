@@ -11,8 +11,7 @@ When configuring a new Mac, or when performing a clean installation of macOS, th
 
 Starter allows users to configure these settings prior to installation, and create reproducible macOS environments.
 
-Installation
-============
+## Installation
 
 Simply clone the repository, `cd` into the local `starter` repository and then:
 
@@ -22,9 +21,8 @@ To configure the various system and application preferences, `cd` into the local
 
     source starter
 
-Tools
-=====
+## Tools
 
 Starter uses Homebrew and Cask to install 3rd party applications.
 
-While Starter will install these tools prior to launch, it is recommended that any 'dotfiles' that may affect the the configuration of these tools be installed prior to initializing Starter.
+While Starter will install these tools prior to launch, it is recommended that any 'dotfiles' that may affect the configuration of these tools be installed prior to initializing Starter.
