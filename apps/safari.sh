@@ -149,11 +149,16 @@ defaults write com.apple.Safari ExtensionsEnabled -bool true
 # Show full URL
 # defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool false
 
-# Stop internet plug-ins to save power
-# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PlugInSnapshottingEnabled -bool true
-
 # Press Tab to highlight each item on a webpage
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
+
+defaults write com.apple.Safari ReadingListSaveArticlesOfflineAutomatically -bool true
+
+# Save article for offline reading automatically
+defaults write com.apple.Safari ReadingListSaveArticlesOfflineAutomatically -bool true
+
+# Stop internet plug-ins to save power
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PlugInSnapshottingEnabled -bool true
 
 # Set default encoding
 defaults write com.apple.Safari WebKitDefaultTextEncodingName -string 'utf-8'
@@ -200,6 +205,9 @@ defaults write com.apple.Safari ShowStatusBar -bool true
 
 # Disable Webkit Nightly start page
 defaults write org.webkit.nightly.WebKit StartPageDisabled -bool true
+
+# Always show toolbar in full screen
+defaults write com.apple.Safari AutoShowToolbarInFullScreen -bool false
 
 # Toggle the toolbar with `⌘⌥T`
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Hide Toolbar' '@~t'
