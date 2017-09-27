@@ -67,7 +67,7 @@ brew "joeyhoer/extras/gifv", args: ["HEAD"]
 brew "graphicsmagick"
 brew "guetzli"
 brew "icoutils"
-brew "imagemagick", args: ["with-librsvg", "with-webp"]
+brew "imagemagick", args: ["with-fftw", "with-hdri", "with-liblqr", "with-librsvg", "with-opencl", "with-openmp", "with-webp"]
 brew "imageworsener"
 brew "jhead"
 brew "jpeg"
@@ -177,6 +177,7 @@ cask "itsycal"
 cask "kaleidoscope"
 cask "osxfuse"
 cask "password-assistant"
+cask "rocket"
 cask "sequel-pro"
 cask "slack"
 cask "sublime-text"
