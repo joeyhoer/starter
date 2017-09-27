@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# Bartender 2
+# Bartender 3
 ###############################################################################
+
+# To show all Bartender Bar items, remove Application menu when needed
+defaults write com.surteesstudios.Bartender  bartenderAutoExtendsMenuBar -bool false
+
+# Bartender items autohides
+defaults write com.surteesstudios.Bartender  bartenderBarDoesntAutohide -bool false
 
 # Bartender has launched before
 defaults write com.surteesstudios.Bartender SUHasLaunchedBefore -bool true
@@ -19,6 +25,9 @@ defaults write com.surteesstudios.Bartender insertGap -bool false
 
 # Check for Updates Automatically
 defaults write com.surteesstudios.Bartender SUAutomaticallyUpdate -bool true
+
+# When on battery, decrease update checking
+defaults write com.surteesstudios.Bartender ReduceUpdateCheckFrequencyWhenOnBattery -bool true
 
 # Update to Test Builds, even though they may be unstable
 defaults write com.surteesstudios.Bartender SUFeedURL -string "http://www.macbartender.com/B2/updates/TestUpdates.php"
