@@ -115,17 +115,18 @@ brew "zopfli", args: ["HEAD"]
 # Mac OS tools
 brew "duti" # Required for setting preferences
 brew "imagesnap"
+brew "mackup"
 brew "tccutil" # Required for setting preferences
 brew "trash"
 brew "wifi-password"
 
 # Server stack
+# brew "httpd"
 brew "dnsmasq"
 brew "percona-server"
-brew "homebrew/php/php56", args: ["with-httpd24"]
-brew "homebrew/php/php56-apcu"
-brew "homebrew/php/php56-mcrypt"
-brew "homebrew/php/php56-opcache"
+brew "homebrew/php/php72", args: ["with-httpd"]
+brew "homebrew/php/php72-apcu"
+brew "homebrew/php/php72-opcache"
 
 # Programming languages
 # Installing Python/Ruby with Homebrew is unnecessary,
@@ -207,6 +208,9 @@ cask "hosts"
 
 # Screensavers
 cask "ios-saver"
+
+# Services
+cask "markdown-service-tool"
 
 # QuickLook plugins
 cask "qlcolorcode"

@@ -45,3 +45,7 @@ defaults write NSGlobalDomain com.apple.trackpad.scaling -float 2.5
 
 # Disable swipe between pages
 defaults write AppleEnableSwipeNavigateWithScrolls -bool false
+
+# Enable three finger drag
+#defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -int 1
+#defaults write com.apple.AppleMultitouchTrackpad com.apple.driver.AppleBluetoothMultitouch.trackpad -int 1
