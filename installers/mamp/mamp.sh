@@ -12,17 +12,17 @@ cp /usr/local/opt/dnsmasq/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf
 sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
 sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 
-# Write local `.dev` DNS listener to DNSmasq configuration
+# Write local `.localhost` DNS listener to DNSmasq configuration
 cat <<HERE >> $(brew --prefix)/etc/dnsmasq.conf
 
 # Local development DNS
-address=/dev/127.0.0.1
+address=/localhost/127.0.0.1
 listen-address=127.0.0.1
 HERE
 
-# Add `.dev` DNS resolver
+# Add `.localhost` DNS resolver
 sudo mkdir -p /etc/resolver
-sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
+sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/localhost'
 
 # Load DNSmasq
 sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
@@ -48,7 +48,7 @@ sudo mkdir ${APACHE_CONF_DIR}/ssl
 # Generate SSL Certificate
 sudo openssl req \
   -x509 -nodes -days 3650 -newkey rsa:4096 \
-  -subj "/C=US/ST=/L=/O=/OU=$(logname)/CN=*.dev" \
+  -subj "/C=US/ST=/L=/O=/OU=$(logname)/CN=*.localhost" \
   -keyout "${APACHE_CONF_DIR}/ssl/localhost.key" \
   -out "${APACHE_CONF_DIR}/ssl/localhost.crt"
 
