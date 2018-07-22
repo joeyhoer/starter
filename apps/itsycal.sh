@@ -37,9 +37,18 @@ defaults write com.mowglii.ItsycalApp HideIcon -bool false
 defaults write com.mowglii.ItsycalApp HighlightedDOWs -int 65
 
 # Theme
-# 0: Light
-# 1: Dark
-defaults write com.mowglii.ItsycalApp ThemeIndex -int 1
+# 1: Light
+# 2: Dark
+defaults write com.mowglii.ItsycalApp ThemePreference -int 1
+
+# Show event location
+defaults write com.mowglii.ItsycalApp kShowEventDots -bool true
+
+# Show event location
+defaults write com.mowglii.ItsycalApp ShowLocation -bool false
 
 # Show calendar weeks
 defaults write com.mowglii.ItsycalApp ShowWeeks -bool true
+
+# Number of calendar rows
+defaults write com.mowglii.ItsycalApp MoCalendarNumRows -int 10
