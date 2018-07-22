@@ -44,3 +44,12 @@ defaults write com.metaclassy.byword BywordDisplayTextCounters -bool false
 
 # Export includes theme
 defaults write com.metaclassy.byword BywordUseThemeOnExport -bool false
+
+# Check spelling while typing
+defaults write com.metaclassy.byword BywordContinuousSpellChecking -bool true
+
+# Check grammar with spelling
+defaults write com.metaclassy.byword BywordGrammarChecking -bool true
+
+# Correct spelling automatically
+defaults write com.metaclassy.byword BywordAutomaticSpellingCorrection -bool false
