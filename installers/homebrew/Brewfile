@@ -7,9 +7,7 @@ tap "caskroom/fonts"
 tap "caskroom/versions"
 tap "homebrew/bundle"
 tap "homebrew/core"
-tap "homebrew/dupes"
 tap "homebrew/headonly"
-tap "homebrew/php"
 tap "joeyhoer/extras"
 tap "justwatchcom/gopass"
 
@@ -124,9 +122,7 @@ brew "wifi-password"
 # brew "httpd"
 brew "dnsmasq"
 brew "percona-server"
-brew "homebrew/php/php72", args: ["with-httpd"]
-brew "homebrew/php/php72-apcu"
-brew "homebrew/php/php72-opcache"
+brew "php72 --with-httpd --with-thread-safety"
 
 # Programming languages
 # Installing Python/Ruby with Homebrew is unnecessary,
