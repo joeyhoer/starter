@@ -37,8 +37,5 @@ brew upgrade
 # Install CLI tools & GUI applications
 brew bundle --file=installers/homebrew/Brewfile
 
-# Remove outdated versions from the cellar
+# Remove outdated versions from the cellar including casks
 brew cleanup && brew prune
-
-# Remove outdated cask versions from the cellar
-brew cask cleanup
