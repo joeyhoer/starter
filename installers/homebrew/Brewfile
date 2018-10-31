@@ -9,7 +9,6 @@ tap "homebrew/bundle"
 tap "homebrew/core"
 tap "homebrew/headonly"
 tap "joeyhoer/extras"
-tap "justwatchcom/gopass"
 
 # Cask dependencies
 brew "mas"
@@ -20,6 +19,7 @@ cask "xquartz"
 # Note: Don't forget to add shells to `/etc/shells` before running `chsh`.
 brew "bash"
 brew "zsh"
+brew "antigen"
 
 # CLI utilities
 # Note: This replaces some (outdated) built-in macOS utilities with the GNU equivalents
@@ -104,7 +104,6 @@ brew "p7zip"
 brew "pbzip2"
 brew "pigz"
 brew "pixz"
-brew "pxz"
 brew "snappy"
 brew "unar"
 brew "xz"
@@ -122,7 +121,7 @@ brew "wifi-password"
 # brew "httpd"
 brew "dnsmasq"
 brew "percona-server"
-brew "php72 --with-httpd --with-thread-safety"
+brew "php"
 
 # Programming languages
 # Installing Python/Ruby with Homebrew is unnecessary,
@@ -132,17 +131,17 @@ brew "pyenv" # Python
 brew "ruby-build"
 brew "rbenv" # Ruby
 brew "node" # Also installs `npm`
-brew "yarn" # Faster than npm
 
 # Web tools
 brew "closure-compiler"
 brew "closure-stylesheets"
 brew "htmlcompressor", args: ["with-yuicompressor"]
 brew "lynx"
-brew "phantomjs"
+cask "phantomjs"
 brew "slimerjs"
 brew "webkit2png"
 brew "yuicompressor"
+brew "sass/sass/sass"
 
 # Network tools
 brew "tor"
@@ -152,7 +151,6 @@ brew "speedtest_cli"
 
 # Security tools
 brew "foremost"
-brew "justwatchcom/gopass/gopass"
 brew "hashpump"
 brew "sqlmap"
 
@@ -180,19 +178,16 @@ cask "slack"
 cask "sublime-text"
 cask "the-unarchiver"
 cask "transmission"
-cask "vector-magic"
 cask "vlc"
 cask "wkhtmltopdf"
 
 # Browsers
 cask "safari-technology-preview"
-cask "webkit-nightly"
 cask "google-chrome"
 cask "google-chrome-canary"
 cask "opera"
 cask "opera-beta"
 cask "firefox"
-cask "firefoxnightly"
 
 # Virtulization applications
 cask "vmware-fusion"
@@ -206,7 +201,7 @@ cask "hosts"
 cask "ios-saver"
 
 # Services
-cask "markdown-service-tool"
+cask "markdown-service-tools"
 
 # QuickLook plugins
 cask "qlcolorcode"
@@ -226,7 +221,6 @@ cask "font-league-gothic"
 cask "font-liberation-sans"
 cask "joeyhoer/extras/font-microsoft-office"
 cask "joeyhoer/extras/font-san-francisco-compact"
-cask "joeyhoer/extras/font-san-francisco-ui"
 cask "font-symbola"
 
 # MAS applications
