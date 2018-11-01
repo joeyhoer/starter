@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
 
-APACHE_CONF_DIR="/etc/apache2"
+# Dynamically get Apache conf directory path
+# Should be "/etc/apache2"
+APACHE_CONF_DIR=$(apachectl -V | awk -F'=' '$1 ~ /SERVER_CONFIG_FILE/ { gsub(/"/, "", $2); print $2 }' | sed 's:/[^/]*$::')
 
 ################################################################################
 ## DNS Configuration
-
-# Create DNSmasq configuration file
-cp /usr/local/opt/dnsmasq/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf
-
-# Enable DNSmasq LaunchDaemon
-sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
-sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 
 # Write local `.localhost` DNS listener to DNSmasq configuration
 cat <<HERE >> $(brew --prefix)/etc/dnsmasq.conf
@@ -25,19 +20,17 @@ sudo mkdir -p /etc/resolver
 sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/localhost'
 
 # Load DNSmasq
-sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+sudo brew services start dnsmasq
 
 ################################################################################
 ## PHP Configuration
 
-# Add (Homebrew) PHP 5.6 module to Apache configuration
-sudo sed -i '' -E 's%^#LoadModule php5_module .*%&\
-LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so%' ${APACHE_CONF_DIR}/httpd.conf
+# Add (Homebrew) PHP module to Apache configuration
+sudo sed -i '' -E 's%^#LoadModule php7_module .*%&\
+LoadModule php7_module /usr/local/opt/php/lib/httpd/modules/libphp7.so%' ${APACHE_CONF_DIR}/httpd.conf
 
-# Enable PHP LaunchAgent
-mkdir -p ~/Library/LaunchAgents
-ln -sfv /usr/local/opt/php56/*.plist ~/Library/LaunchAgents/
-launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.php56.plist
+# Load PHP
+brew services start php
 
 ################################################################################
 ## SSL Configuration
