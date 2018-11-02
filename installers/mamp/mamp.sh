@@ -8,12 +8,12 @@ APACHE_CONF_DIR=$(apachectl -V | awk -F'=' '$1 ~ /SERVER_CONFIG_FILE/ { gsub(/"/
 ## DNS Configuration
 
 # Write local `.localhost` DNS listener to DNSmasq configuration
-cat <<HERE >> $(brew --prefix)/etc/dnsmasq.conf
+cat <<EOF >> $(brew --prefix)/etc/dnsmasq.conf
 
 # Local development DNS
 address=/localhost/127.0.0.1
 listen-address=127.0.0.1
-HERE
+EOF
 
 # Add `.localhost` DNS resolver
 sudo mkdir -p /etc/resolver
@@ -38,10 +38,22 @@ brew services start php
 # Create SSL Direcotry
 sudo mkdir ${APACHE_CONF_DIR}/ssl
 
+# Create localhost SSL configuration file
+cat <<EOF > "${APACHE_CONF_DIR}/ssl/localhost.cnf"
+[dn]
+CN=localhost
+[req]
+distinguished_name = dn
+[EXT]
+subjectAltName=DNS:localhost,DNS:*.localhost
+keyUsage=digitalSignature\nextendedKeyUsage=serverAuth
+EOF
+
 # Generate SSL Certificate
 sudo openssl req \
-  -x509 -nodes -days 3650 -newkey rsa:4096 \
-  -subj "/C=US/ST=/L=/O=/OU=$(logname)/CN=*.localhost" \
+  -x509 -nodes -days 3650 -nodes -sha256 -newkey rsa:4096  \
+  -subj "/CN=localhost" -extensions EXT \
+  -config "${APACHE_CONF_DIR}/ssl/localhost.cnf" \
   -keyout "${APACHE_CONF_DIR}/ssl/localhost.key" \
   -out "${APACHE_CONF_DIR}/ssl/localhost.crt"
 
@@ -85,7 +97,7 @@ sudo sed -i '' -E "s%^#(Include .*/extra/($(join '|' ${extras[@]})))%\1%g" ${APA
 sudo sed -i '' -E 's%^#(Include .*/users/\*.conf)%\1%g' ${APACHE_CONF_DIR}/extra/httpd-userdir.conf
 
 ## Create user virtual hosts file
-cat > ${APACHE_CONF_DIR}/users/$(logname).conf <<EOF
+cat <<EOF > ${APACHE_CONF_DIR}/users/$(logname).conf
 ## Default configurations
 ################################################################################
 
