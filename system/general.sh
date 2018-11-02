@@ -52,3 +52,9 @@ defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd
 
 # Disable Auto Save, Versions and Resume
 # defaults write -g ApplePersistence -bool false
+
+# Disable Crash Reporter dialog
+# defaults write com.apple.CrashReporter DialogType none
+
+# Display crash reports in Notification Center (instead of dialog)
+defaults write com.apple.CrashReporter UseUNC 1
