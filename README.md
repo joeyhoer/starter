@@ -15,7 +15,7 @@ Starter allows users to configure these settings prior to installation, and crea
 
 Simply clone the repository, `cd` into the local `starter` repository and then:
 
-    source installer
+    source install
 
 To configure the various system and application preferences, `cd` into the local `starter` repository and then:
 
