@@ -37,9 +37,10 @@ defaults write com.mowglii.ItsycalApp HideIcon -bool false
 defaults write com.mowglii.ItsycalApp HighlightedDOWs -int 65
 
 # Theme
+# 0: System
 # 1: Light
 # 2: Dark
-defaults write com.mowglii.ItsycalApp ThemePreference -int 1
+defaults write com.mowglii.ItsycalApp ThemePreference -int 0
 
 # Show event location
 defaults write com.mowglii.ItsycalApp kShowEventDots -bool true
