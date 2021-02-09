@@ -159,7 +159,7 @@ sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 # defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers \
 #   -array-add "{LSHandlerContentType=${content_ype};LSHandlerRoleAll=${bundle_id};}"
 
-if [ -x "/usr/local/bin/duti" && "${HOME}/.duti"]; then
+if [ -x "/usr/local/bin/duti" && "${HOME}/.duti" ]; then
   /usr/local/bin/duti "${HOME}/.duti"
 fi
 
