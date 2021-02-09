@@ -55,8 +55,11 @@ defaults write com.apple.dock autohide-delay -float 0
 # Spring loaded Dock items
 defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 
-# Show indicator lights for open applications
+# Show indicators for open applications
 defaults write com.apple.dock show-process-indicators -bool true
+
+# Show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
 
 # Highlight hover effect for the grid view of a stack
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
