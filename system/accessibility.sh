@@ -13,10 +13,10 @@ sudo chmod 444 /private/var/db/.AccessibilityAPIEnabled
 ## Display
 
 # Increase contrast
-defaults write com.apple.universalaccess increaseContrast -bool false
+sudo defaults write com.apple.universalaccess increaseContrast -bool false
 
 # Reduce transparency
-defaults write com.apple.universalaccess reduceTransparency -bool false
+sudo defaults write com.apple.universalaccess reduceTransparency -bool false
 
 # Shake mouse cursor to locate
 defaults write CGDisableCursorLocationMagnification -bool false
@@ -24,22 +24,22 @@ defaults write CGDisableCursorLocationMagnification -bool false
 ## Zoom
 
 # Enable temporary zoom (Hold down ⌃⌥ to zoom when needed)
-defaults write com.apple.universalaccess closeViewPressOnReleaseOff -bool false
+sudo defaults write com.apple.universalaccess closeViewPressOnReleaseOff -bool false
 
 # Zoom using scroll gesture with the Ctrl (^) modifier key
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+sudo defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
 # Smooth Zoomed Images
-defaults write com.apple.universalaccess closeViewSmoothImages -bool false
+sudo defaults write com.apple.universalaccess closeViewSmoothImages -bool false
 
 # Follow the keyboard focus while zoomed
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+sudo defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Zoom Style
 # 0 : Fullscreen
 # 1 : Picture-in-picture
-defaults write com.apple.universalaccess closeViewZoomMode -int 1
+sudo defaults write com.apple.universalaccess closeViewZoomMode -int 1
 
 
 # Speech
