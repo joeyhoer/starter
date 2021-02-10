@@ -6,6 +6,10 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+# Download Mackup files from iCloud
+find "${HOME}/Library/Mobile Documents/com~apple~CloudDocs/Mackup/" -type f -name "*.icloud" -exec brctl download {} \;
+mackup restore
+
 # Set global variables
 PREF_FILES=()
 AFFECTED_APPS=()
@@ -134,16 +138,23 @@ set_prefs font-book "Font Book"
 set_prefs iwork "Keynote" "Numbers" "Pages"
 set_prefs mail "Mail"
 set_prefs messages "Messages"
+set_prefs photos "Photos"
 set_prefs quicktime "QuickTime Player"
 set_prefs safari "Safari" "WebKit"
+set_prefs screenshot
 set_prefs terminal # Do not kill "Terminal" - it will stop script execution
 set_prefs textedit "TextEdit"
 
 # Third Party Apps
 set_prefs adobe
+set_prefs bartender "Bartender"
+set_prefs byword "Byword"
 set_prefs divvy "Divvy"
 set_prefs dropbox "Dropbox"
+set_prefs forklift "Forklift"
+set_prefs itsycal "Itsycal"
 set_prefs google-chrome "Google Chrome"
+set_prefs marked2 "Marked 2"
 set_prefs qlcolorcode "Quick Look"
 set_prefs sublime-text "Sublime Text"
 set_prefs transmission "Transmission"
