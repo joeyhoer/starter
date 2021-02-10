@@ -6,7 +6,7 @@
 
 # Install Homebrew if not installed - brew.sh
 if ! hash brew 2>/dev/null; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 # Schedule Homebrew Updates
