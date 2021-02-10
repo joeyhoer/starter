@@ -2,12 +2,11 @@
 cask_args appdir: "/Applications"
 
 # Taps
-tap "caskroom/cask"
-tap "caskroom/fonts"
-tap "caskroom/versions"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 tap "homebrew/bundle"
 tap "homebrew/core"
-tap "homebrew/headonly"
 tap "joeyhoer/extras"
 
 # Cask dependencies
@@ -25,7 +24,7 @@ brew "antigen"
 # Note: This replaces some (outdated) built-in macOS utilities with the GNU equivalents
 # Don't forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew "coreutils"
-brew "curl", args: ["with-nghttp2"]
+brew "curl"
 #brew "findutils" # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 brew "git"
 brew "grep"
@@ -159,13 +158,8 @@ brew "hashpump"
 brew "sqlmap"
 
 # Install GUI applications
-cask "adapter"
 cask "adobe-creative-cloud"
-cask "airdisplay"
-cask "airserver"
-cask "atom"
 cask "bartender"
-cask "boom"
 cask "colors"
 cask "dropbox"
 cask "forklift"
@@ -177,11 +171,10 @@ cask "kaleidoscope"
 cask "monitorcontrol"
 cask "osxfuse"
 cask "password-assistant"
+cask "rectangle"
 cask "rocket"
 cask "shortcuts"
 cask "sequel-pro"
-cask "shortcuts"
-cask "slack"
 cask "sublime-text"
 cask "the-unarchiver"
 cask "transmission"
@@ -189,17 +182,12 @@ cask "vlc"
 cask "wkhtmltopdf"
 
 # Browsers
-cask "safari-technology-preview"
+#cask "safari-technology-preview"
 cask "google-chrome"
-cask "google-chrome-canary"
-cask "opera"
-cask "opera-beta"
+#cask "google-chrome-canary"
+#cask "opera"
+#cask "opera-beta"
 cask "firefox"
-
-# Virtulization applications
-cask "vmware-fusion"
-cask "vagrant"
-cask "vagrant-manager"
 
 # Preference Panes
 cask "hosts"
@@ -237,9 +225,10 @@ cask "font-symbola"
 # `brew bundle dump --file=- | egrep ^mas`
 mas "1Blocker", id: 1107421413
 mas "Byword", id: 420212497
-mas "Divvy", id: 413857545
+mas "Harvest", id: 506189836
 mas "Kaleidoscope", id: 587512244
 mas "Marked 2", id: 890031187
+mas "Slack", id: 803453959
 mas "xScope", id: 889428659
 
 # Apple MAS applications
