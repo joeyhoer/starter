@@ -2,7 +2,7 @@
 
 # Dynamically get Apache conf directory path
 # Should be "/etc/apache2"
-APACHE_CONF_DIR=$(apachectl -V | awk -F'=' '$1 ~ /SERVER_CONFIG_FILE/ { gsub(/"/, "", $2); print $2 }' | sed 's:/[^/]*$::')
+APACHE_CONF_DIR=$(apachectl -V 2>/dev/null | awk -F'=' '$1 ~ /SERVER_CONFIG_FILE/ { gsub(/"/, "", $2); print $2 }' | sed 's:/[^/]*$::')
 
 ################################################################################
 ## DNS Configuration
@@ -30,7 +30,7 @@ sudo sed -i '' -E "s%^#LoadModule php.*_module .*%&\n\
 LoadModule php_module $(brew --prefix php)/lib/httpd/modules/libphp.so%" ${APACHE_CONF_DIR}/httpd.conf
 
 # Load PHP
-brew services start php
+sudo brew services start php
 
 ################################################################################
 ## SSL Configuration
@@ -39,7 +39,7 @@ brew services start php
 sudo mkdir ${APACHE_CONF_DIR}/ssl
 
 # Create localhost SSL configuration file
-cat <<EOF > "${APACHE_CONF_DIR}/ssl/localhost.cnf"
+sudo bash -c "cat <<EOF > '${APACHE_CONF_DIR}/ssl/localhost.cnf'
 [dn]
 CN=localhost
 [req]
@@ -47,12 +47,12 @@ distinguished_name = dn
 [EXT]
 subjectAltName=DNS:localhost,DNS:*.localhost
 keyUsage=digitalSignature\nextendedKeyUsage=serverAuth
-EOF
+EOF"
 
 # Generate SSL Certificate
 sudo openssl req \
   -x509 -nodes -days 3650 -nodes -sha256 -newkey rsa:4096  \
-  -subj "/CN=localhost" -extensions EXT \
+  -subj "/CN=localhost" \
   -config "${APACHE_CONF_DIR}/ssl/localhost.cnf" \
   -keyout "${APACHE_CONF_DIR}/ssl/localhost.key" \
   -out "${APACHE_CONF_DIR}/ssl/localhost.crt"
@@ -97,14 +97,14 @@ sudo sed -i '' -E "s%^#(Include .*/extra/($(join '|' ${extras[@]})))%\1%g" ${APA
 sudo sed -i '' -E 's%^#(Include .*/users/\*.conf)%\1%g' ${APACHE_CONF_DIR}/extra/httpd-userdir.conf
 
 ## Create user virtual hosts file
-cat <<EOF > ${APACHE_CONF_DIR}/users/$(logname).conf
+sudo bash -c "cat <<EOF > ${APACHE_CONF_DIR}/users/$(logname).conf
 ## Default configurations
 ################################################################################
 
 # Set default charset
 AddDefaultCharset utf-8
 
-# Remove "charset=iso-8859-1" from error documents
+# Remove \"charset=iso-8859-1\" from error documents
 # https://httpd.apache.org/docs/trunk/env.html#suppress-error-charset
 SetEnvIf Host ^ suppress-error-charset
 
@@ -125,7 +125,7 @@ ServerSignature Off
     RewriteMap lowercase int:tolower
 </IfModule>
 
-<Directory "${HOME}/Sites/">
+<Directory \"${HOME}/Sites/\">
     Options Indexes MultiViews FollowSymLinks Includes
 
     # http://httpd.apache.org/docs/2.4/upgrading.html#run-time
@@ -138,8 +138,6 @@ ServerSignature Off
 ################################################################################
 
 <IfModule mod_env>
-    # Enable Magento developer mode
-    SetEnv MAGE_IS_DEVELOPER_MODE "1"
 </IfModule>
 
 
@@ -214,7 +212,7 @@ Listen 443
         SSLCertificateKeyFile ${APACHE_CONF_DIR}/ssl/localhost.key
     </IfModule>
 </VirtualHost>
-EOF
+EOF"
 
 ################################################################################
 ## Restart Services
