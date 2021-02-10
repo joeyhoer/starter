@@ -70,6 +70,9 @@ defaults write com.apple.dock 'checked-for-launchpad' -bool true
 # Remove all (default) app icons from the Dock
 defaults write com.apple.dock persistent-apps -array
 
+# Show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
 # Lock the Dock contents
 # defaults write com.apple.dock contents-immutable -bool true
 
