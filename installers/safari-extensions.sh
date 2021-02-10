@@ -11,7 +11,6 @@ safari_browsers="/Applications/Safari.app"
 
 # Safari extensions array
 safari_extensions=(
-  "http://download.livereload.com/2.1.0/LiveReload-2.1.0.safariextz"
   "http://sobolev.us/download/stylish/stylish.safariextz"
 )
 
