@@ -18,3 +18,6 @@ defaults write com.apple.networkConnect VPNShowTime -bool false
 
 # Show Status When Connecting in VPN menubar item
 defaults write com.apple.networkConnect VPNShowStatus -bool false
+
+# Use Google public DNS (IP Addresses, space delimited)
+sudo networksetup -setdnsservers "$connected_service" 8.8.8.8 8.8.4.4
