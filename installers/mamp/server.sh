@@ -26,8 +26,8 @@ sudo brew services start dnsmasq
 ## PHP Configuration
 
 # Add (Homebrew) PHP module to Apache configuration
-sudo sed -i '' -E 's%^#LoadModule php7_module .*%&\
-LoadModule php7_module /usr/local/opt/php/lib/httpd/modules/libphp7.so%' ${APACHE_CONF_DIR}/httpd.conf
+sudo sed -i '' -E "s%^#LoadModule php.*_module .*%&\n\
+LoadModule php_module $(brew --prefix php)/lib/httpd/modules/libphp.so%" ${APACHE_CONF_DIR}/httpd.conf
 
 # Load PHP
 brew services start php
@@ -181,6 +181,11 @@ Listen 443
     ServerAlias *.*.*
     VirtualDocumentRoot ${HOME}/Sites/%-2/%-3+/
 
+    # Upgrade Insecure Requests to prevent mixed content
+    <IfModule mod_headers.c>
+        Header always set Content-Security-Policy "upgrade-insecure-requests;"
+    </IfModule>
+
     # Enable SSL
     <IfModule mod_ssl.c>
         SSLEngine on
@@ -196,6 +201,11 @@ Listen 443
     # http://httpd.apache.org/docs/2.4/mod/mod_vhost_alias.html#interpol
     ServerAlias *.*
     VirtualDocumentRoot ${HOME}/Sites/%1/www/
+
+    # Upgrade Insecure Requests to prevent mixed content
+    <IfModule mod_headers.c>
+        Header always set Content-Security-Policy "upgrade-insecure-requests;"
+    </IfModule>
 
     # Enable SSL
     <IfModule mod_ssl.c>
