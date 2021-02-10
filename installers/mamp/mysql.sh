@@ -8,9 +8,8 @@ mysql_pkg=mysql
 # Use percona as a drop-in replacement, if available
 [ -n "$(brew ls --versions percona-server)" ] && mysql_pkg=percona-server
 
-# Enable MySQL LaunchAgent
-ln -sfv /usr/local/opt/${mysql_pkg}/*.plist ~/Library/LaunchAgents
-launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.${mysql_pkg}.plist
+# Use launchd to start percona-server now and restart at login
+# brew services start percona-server
 
 # Configure MySQL
 mysql -f -uroot 2>/dev/null < <( cat <<EOF
